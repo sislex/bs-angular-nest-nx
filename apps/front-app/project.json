@@ -17,9 +17,10 @@
         "tsConfig": "apps/front-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
+          "apps/front-app/src/assets",
           {
             "glob": "**/*",
-            "input": "apps/front-app/public"
+            "input": "apps/front-app/src/assets"
           }
         ],
         "styles": ["apps/front-app/src/styles.scss"],

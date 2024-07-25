@@ -4,7 +4,7 @@ import { LogoBoxComponent } from '../../components/navigation-bar-1/components/l
 import {catalogI} from "../../conference.component";
 
 @Component({
-  selector: 'conference-footer',
+  selector: 'app-conference-footer',
   standalone: true,
   imports: [RouterModule, LogoBoxComponent],
   templateUrl: './footer.component.html',

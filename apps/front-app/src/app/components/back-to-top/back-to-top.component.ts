@@ -1,7 +1,7 @@
 import { Component, HostListener, ElementRef, type OnInit } from '@angular/core'
 
 @Component({
-  selector: 'component-back-to-top',
+  selector: 'app-component-back-to-top',
   standalone: true,
   imports: [],
   templateUrl: './back-to-top.component.html',

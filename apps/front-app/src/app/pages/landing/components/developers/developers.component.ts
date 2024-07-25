@@ -3,7 +3,7 @@ import { SpeakerType, speakersData } from '../../data'
 import {SimplebarAngularModule} from "simplebar-angular";
 
 @Component({
-  selector: 'developers',
+  selector: 'app-developers',
   standalone: true,
   imports: [
     SimplebarAngularModule

@@ -5,7 +5,7 @@
     </h2>
     <ngx-simplebar class="mb-4 mb-lg-5 pb-4 px-3">
       <div class="row row-cols-lg-4 flex-nowrap flex-lg-wrap gy-lg-5 mx-n3">
-        @for (item of speakerData; track $index) {
+        @for (item of speakerData; track item.name) {
           <div class="col">
             <a
               class="d-block text-center text-decoration-none"

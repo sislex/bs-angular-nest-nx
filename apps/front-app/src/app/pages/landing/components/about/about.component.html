@@ -9,7 +9,7 @@
             init="false"
             class="swiper-wrapper"
           >
-            @for (item of heroSwiper; track $index) {
+            @for (item of heroSwiper; track item.name) {
               <swiper-slide class="swiper-slide">
                 <div
                   class="position-relative overflow-hidden "

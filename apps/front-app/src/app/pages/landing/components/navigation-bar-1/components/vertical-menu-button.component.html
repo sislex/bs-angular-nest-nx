@@ -1,6 +1,6 @@
 <ng-template #offcanvasContent>
   <div class="offcanvas-header border-bottom">
-    <component-logo-box />
+    <app-component-logo-box />
 
     <button
       (click)="offcanvasService.dismiss()"
@@ -12,7 +12,7 @@
   </div>
 
   <div class="offcanvas-body">
-    <vertical-app-menu [catalog]="catalog"></vertical-app-menu>
+    <app-vertical-app-menu [catalog]="catalog"></app-vertical-app-menu>
   </div>
 </ng-template>
 

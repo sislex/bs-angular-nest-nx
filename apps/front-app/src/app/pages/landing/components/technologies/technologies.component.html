@@ -3,11 +3,11 @@
     <h2 class="h1 text-center pb-sm-2 py-md-3 mt-sm-2 mb-lg-4">Technologies used</h2>
     <ngx-simplebar class="mb-4 mb-lg-5 pb-3 px-3">
       <div class="row row-cols-lg-4 flex-nowrap flex-lg-wrap gy-lg-5 mx-n3">
-        @for (item of allSponsoredDetail; track $index) {
+        @for (item of allSponsoredDetail; track item.name) {
           <div class="col" style="min-width: 225px">
             <img
               class="d-block mb-2 mb-lg-2"
-              src="{{ item. dark_logo}}"
+              src="{{ item.dark_logo}}"
               alt="Logo"
               style="height: 40px"
             />

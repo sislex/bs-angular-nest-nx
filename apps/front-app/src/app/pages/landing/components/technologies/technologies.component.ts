@@ -3,7 +3,7 @@ import { sponsoredData, SponsorsType } from '../../data'
 import { SimplebarAngularModule } from 'simplebar-angular'
 
 @Component({
-  selector: 'technologies',
+  selector: 'app-technologies',
   standalone: true,
   imports: [
     SimplebarAngularModule

@@ -4,7 +4,7 @@ import { targetData, TargetDataType } from '../../data'
 import { SimplebarAngularModule } from 'simplebar-angular'
 
 @Component({
-  selector: 'conference-target',
+  selector: 'app-conference-target',
   standalone: true,
   imports: [
     NgbNavModule,

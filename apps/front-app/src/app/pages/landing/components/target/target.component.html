@@ -31,11 +31,11 @@
                       {{ item.content.text }}
                     </p>
                     <ul class="fs-l mb-0">
-                      @for (data of item.content.list; track $index) {
+
                         <li class="mb-1 data-size">
-                          {{ data }}
+                          {{ item.content.list }}
                         </li>
-                      }
+
                     </ul>
                   </div>
                 </ng-template>

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core'
 import {catalogI} from "../../../../conference.component";
 
 @Component({
-  selector: 'vertical-app-menu',
+  selector: 'app-vertical-app-menu',
   standalone: true,
   imports: [],
   templateUrl: './vertical-app-menu.component.html',

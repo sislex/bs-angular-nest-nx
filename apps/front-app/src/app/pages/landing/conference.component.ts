@@ -14,7 +14,7 @@ export interface catalogI {
 }
 
 @Component({
-  selector: 'landings-conference',
+  selector: 'app-landings-conference',
   standalone: true,
   imports: [
     NavigationBarComponent,

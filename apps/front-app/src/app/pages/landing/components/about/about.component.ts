@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common'
 
 register()
 @Component({
-  selector: 'about',
+  selector: 'app-about',
   standalone: true,
   imports: [SwiperDirective, CommonModule],
   templateUrl: './about.component.html',

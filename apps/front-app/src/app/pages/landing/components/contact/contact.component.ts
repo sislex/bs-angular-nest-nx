@@ -9,7 +9,7 @@ import {
 } from '@angular/forms'
 
 @Component({
-  selector: 'conference-contact',
+  selector: 'app-conference-contact',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './contact.component.html',

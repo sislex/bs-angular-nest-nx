@@ -2,14 +2,14 @@ import {Component, Input} from '@angular/core'
 import { VerticalMenuButtonComponent } from './components/vertical-menu-button.component'
 import { LogoBoxComponent } from './components/logo-box/logo-box.component'
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap'
-import { HorizontalAppMenu } from "./components/horizontal-app-menu/horizontal-app-menu.component";
+import { HorizontalAppMenuComponent } from "./components/horizontal-app-menu/horizontal-app-menu.component";
 import {catalogI} from "../../conference.component";
 
 @Component({
-  selector: 'component-navigation-bar',
+  selector: 'app-component-navigation-bar',
   standalone: true,
   imports: [
-    HorizontalAppMenu,
+    HorizontalAppMenuComponent,
     LogoBoxComponent,
     NgbCollapseModule,
     VerticalMenuButtonComponent,
@@ -21,7 +21,4 @@ export class NavigationBarComponent {
   @Input() catalog: catalogI[] = [];
 
   isMenuCollapsed = false
-
-
-
 }

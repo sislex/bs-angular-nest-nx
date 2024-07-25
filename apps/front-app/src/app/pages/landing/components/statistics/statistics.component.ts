@@ -7,7 +7,7 @@ export interface statisticsI {
 }
 
 @Component({
-  selector: 'statistics',
+  selector: 'app-statistics',
   standalone: true,
   imports: [],
   templateUrl: './statistics.component.html',

@@ -5,7 +5,7 @@ import { LogoBoxComponent } from './logo-box/logo-box.component'
 import {catalogI} from "../../../conference.component";
 
 @Component({
-  selector: 'vertical-menu-button',
+  selector: 'app-vertical-menu-button',
   standalone: true,
   imports: [VerticalAppMenuComponent, LogoBoxComponent],
   templateUrl: './vertical-menu-button.component.html',
