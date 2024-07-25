@@ -1,0 +1,25 @@
+<header class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <component-logo-box [className]="'pe-sm-3'" />
+
+    <button
+      class="btn btn-md fs-sm order-lg-3 d-none d-lg-inline-flex but-con"
+      :href="/landings/conference"
+      target="_blank"
+      rel="noopener"
+    >
+      Contacts
+    </button>
+
+    <vertical-menu-button [catalog]="catalog" class="btn-sm"></vertical-menu-button>
+
+    <nav
+      class="collapse navbar-collapse"
+      #collapse="ngbCollapse"
+      [(ngbCollapse)]="!isMenuCollapsed"
+      id="navbarNav"
+    >
+      <horizontal-app-menu [catalog]="catalog"></horizontal-app-menu>
+    </nav>
+  </div>
+</header>

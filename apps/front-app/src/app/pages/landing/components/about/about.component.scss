@@ -1,0 +1,53 @@
+#thumbnails {
+  width: fit-content !important;
+  margin-left: auto;
+}
+
+.swiper-thumbnail > img {
+  border-radius: 50%;
+}
+
+.swiper-thumbnail {
+  height: 94px !important;
+  width: 94px !important;
+}
+
+@media (max-width: 425px) {
+  .swiper-thumbnail {
+    height: 65px !important;
+    width: 65px !important;
+  }
+}
+
+img,
+figure {
+  max-width: 100%;
+
+}
+
+h1 {
+  color: #000000;
+}
+
+.text-on {
+color: #576071;
+font-size: 19px;
+}
+
+.work {
+  align-items: center;
+  width: auto !important;
+  background-color: #448c74 ;
+  border: #ffffff;
+}
+.work:hover {
+  background-color: #397864;
+}
+
+.hero {
+  width: 100%;
+  color: #ffffff;
+  background: linear-gradient( 0deg,
+    rgba(15, 17, 21, 2) 0%,
+    rgba(16, 20, 24, 0.3) 100%);
+}

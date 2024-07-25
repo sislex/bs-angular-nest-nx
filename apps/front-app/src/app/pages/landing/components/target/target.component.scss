@@ -1,0 +1,37 @@
+.work {
+  align-items: center;
+  width: auto !important;
+  background-color: #448c74;
+  border: #ffffff;
+}
+.work:hover {
+  background-color: #397864;
+}
+
+.nav-link.active {
+  background-color: white;
+  color: #448c74;
+  border-color: #448c74;
+  border: 1px solid #448c74;
+  margin-right: 5px;
+
+}
+
+.nav-link {
+  background-color: white;
+  color: #000000;
+  border-radius: 15px;
+  margin-right: 5px;
+}
+
+.data-size {
+  color: #576071;
+  font-size: large;
+}
+
+.head-size {
+  color: #434a57;
+  font-size: large;
+}
+
+

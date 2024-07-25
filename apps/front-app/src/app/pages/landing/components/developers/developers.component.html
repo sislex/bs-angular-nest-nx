@@ -1,0 +1,29 @@
+<div class="sec">
+  <section class="container py-5 mt-xl-3">
+    <h2 class="h1 text-center pt-2 pt-sm-3 pt-md-4 pt-lg-5 mt-xl-2 mb-5">
+      Developers are available now
+    </h2>
+    <ngx-simplebar class="mb-4 mb-lg-5 pb-4 px-3">
+      <div class="row row-cols-lg-4 flex-nowrap flex-lg-wrap gy-lg-5 mx-n3">
+        @for (item of speakerData; track $index) {
+          <div class="col">
+            <a
+              class="d-block text-center text-decoration-none"
+              href="javascript:void(0);"
+              style="min-width: 210px"
+            >
+              <img
+                class="rounded-circle"
+                src="{{ item.avatar }}"
+                width="120"
+                alt="Avatar"
+              />
+              <h3 class="h5 pt-4 mb-1 name">{{ item.name }}</h3>
+              <p class="mb-0 position">{{ item.role }}</p>
+            </a>
+          </div>
+        }
+      </div>
+    </ngx-simplebar>
+  </section>
+</div>

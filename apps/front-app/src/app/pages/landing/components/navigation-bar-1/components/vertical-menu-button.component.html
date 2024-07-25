@@ -1,0 +1,29 @@
+<ng-template #offcanvasContent>
+  <div class="offcanvas-header border-bottom">
+    <component-logo-box />
+
+    <button
+      (click)="offcanvasService.dismiss()"
+      class="btn-close"
+      type="button"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <vertical-app-menu [catalog]="catalog"></vertical-app-menu>
+  </div>
+</ng-template>
+
+<button
+  class="navbar-toggler ms-sm-3"
+  [attr.aria-expanded]="isOffcanvasOpen"
+  (click)="offcanvasService.open(offcanvasContent)"
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#navbarNav"
+  aria-label="Toggle navigation"
+>
+  <span class="navbar-toggler-icon togg" ></span>
+</button>

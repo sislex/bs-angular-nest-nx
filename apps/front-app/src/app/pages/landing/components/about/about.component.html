@@ -1,0 +1,100 @@
+<section class="position-relative py-5">
+  <div class="container position-relative z-2 py-md-3 py-lg-4 py-xl-5">
+    <div class="row align-items-center justify-content-center pt-5 pb-2 pb-sm-3 mt-sm-4">
+      <div class="col-10 col-sm-8 col-md-6 col-xl-5 offset-lg-1 offset-xl-2 order-md-2 pb-3 pb-md-0 mb-3 mb-sm-4 mb-md-0">
+        <div class="swiper">
+          <swiper-container
+            [config]="swiperConfig"
+            thumbs-swiper=".swiper-thumbnails"
+            init="false"
+            class="swiper-wrapper"
+          >
+            @for (item of heroSwiper; track $index) {
+              <swiper-slide class="swiper-slide">
+                <div
+                  class="position-relative overflow-hidden "
+                  style="
+                    border-bottom-left-radius: 50%;
+                    border-top-left-radius: 50%;
+                    border-top-right-radius: 50%;
+                  "
+                >
+                  <img src="{{ item.image }}" alt="Image" />
+                  <div class="d-flex align-items-end justify-content-end position-absolute start-0 bottom-0 w-100">
+                    <div class="text-end pe-4 pb-4 hero">
+                      <h3 class="h5 mb-1" >{{ item.name }}</h3>
+                      <p class=" fs-sm mb-0">
+                        {{ item.position }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </swiper-slide>
+            }
+          </swiper-container>
+        </div>
+
+        <swiper-container
+          [config]="swiperThumbsConfig"
+          init="false"
+          class="swiper-thumbnails thumb-swiper swiper-thumbnails-circle flex-nowrap justify-content-end pt-4 me-1"
+          id="thumbnails"
+        >
+          <swiper-slide
+            class="swiper-thumbnail swiper-pagination-bullet"
+            tabindex="0"
+            aria-current="true"
+          >
+            <img
+              src="../../../../../assets/img/landing/conference/about/th01.jpg"
+              alt="Thumbnail"
+            />
+          </swiper-slide>
+          <swiper-slide
+            class="swiper-thumbnail swiper-pagination-bullet"
+            tabindex="0"
+          >
+            <img
+              src="../../../../../assets/img/landing/conference/about/th02.jpg"
+              alt="Thumbnail"
+            />
+          </swiper-slide>
+          <swiper-slide
+            class="swiper-thumbnail swiper-pagination-bullet"
+            tabindex="0"
+          >
+            <img
+              src="../../../../../assets/img/landing/conference/about/th03.jpg"
+              alt="Thumbnail"
+            />
+          </swiper-slide>
+        </swiper-container>
+      </div>
+
+      <div class="col-sm-10 col-md-6 col-lg-5 order-md-1 lh">
+        <h1 class="display-3 text-uppercase d-none d-lg-block pb-3 mb-4 fw-medium">
+          We create technologies that change the world
+        </h1>
+        <h1 class="display-5 text-uppercase d-lg-none pb-1 pb-sm-2 fw-medium">
+          We create technologies that change the world
+        </h1>
+        <p class="text-on fw-normal pb-2 lh-sm pb-sm-3 pb-md-4 pb-xl-5 mb-xl-2">
+          We are a team of exceptional developers striving for excellence
+          in every line of code. Our goal is not just to create software solutions but to shape the future of technology.
+          United by a passion for innovation and a commitment to excellence, we help companies worldwide reach new heights.
+        </p>
+        <div class="d-sm-flex" >
+          <a
+            class="btn btn-lg btn-primary w-100 w-md-auto mb-3 mb-sm-0 me-sm-3 me-lg-4 work"
+            href="#contact"
+            data-scroll
+            data-scroll-offset="120"
+          >
+            Work With Us
+            <i class="ai-arrow-down ms-2 me-n2" ></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

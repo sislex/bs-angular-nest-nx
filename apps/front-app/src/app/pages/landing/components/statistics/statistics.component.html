@@ -1,0 +1,14 @@
+<section class="position-relative py-4 py-md-5 bg-main">
+  <div class="container position-relative z-2">
+    <div class="row row-cols-2 row-cols-md-4 s-main ">
+      @for (item of statistics; track item.name) {
+      <div class="col d-flex {{item.position}}">
+        <div class="py-3 my-lg-2 my-xl-3 fs-4">
+          <div class="text-dark display-4 mb-1 fw-semibold stat-description">{{item.description}}</div>
+          <p class="mb-0 stat-name ">{{item.name}}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
