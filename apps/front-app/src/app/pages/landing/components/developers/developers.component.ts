@@ -1,6 +1,7 @@
-import { Component } from '@angular/core'
-import { SpeakerType, speakersData } from '../../data'
+import { Component, OnInit } from '@angular/core';
 import {SimplebarAngularModule} from "simplebar-angular";
+import { TeamsService } from '../../../../services/teams.service';
+import { Teams } from '../../../../../../../back-app/src/entities/team.entity';
 
 @Component({
   selector: 'app-developers',
@@ -11,6 +12,16 @@ import {SimplebarAngularModule} from "simplebar-angular";
   templateUrl: './developers.component.html',
   styleUrl: './developers.component.scss',
 })
-export class DevelopersComponent {
-  speakerData: SpeakerType[] = speakersData
+export class DevelopersComponent implements OnInit {
+  speakerData: Teams[] = [];
+
+  constructor(private teamsService: TeamsService) {}
+
+  ngOnInit(): void {
+    this.teamsService.getTeams().subscribe((data: Teams[]) => {
+      this.speakerData = data;
+      console.log('123', this.speakerData);
+    });
+
+  }
 }

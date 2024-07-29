@@ -6,14 +6,12 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: test_db
+      MYSQL_DATABASE: best_solutions_db
     ports:
       - '3306:3306'
     volumes:
       - mysql-data:/var/lib/mysql
       - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - app-network
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -26,26 +24,10 @@ services:
       - '8080:80'
     depends_on:
       - mysql
-    networks:
-      - app-network
 
-#  frontend:
-#    build:
-#      context: .
-#      dockerfile: docker/Dockerfile.frontend
-#    container_name: frontend_app
-#    ports:
-#      - '4200:4200'
-#    depends_on:
-#      - mysql
-#
-#  backend:
-#    build:
-#      context: .
-#      dockerfile: docker/Dockerfile.backend
-#    container_name: backend_app
-#    ports:
-#      - '3000:3000'
+#  nestjs:
+#    build: .
+#    container_name: nestjs
 #    depends_on:
 #      - mysql
 #    environment:
@@ -53,7 +35,10 @@ services:
 #      DATABASE_PORT: 3306
 #      DATABASE_USER: root
 #      DATABASE_PASSWORD: root
-#      DATABASE_NAME: test_db
+#      DATABASE_NAME: best_solutions_db
+#    ports:
+#      - '3000:3000'
+#      - '4200:4200'
 #    networks:
 #      - app-network
 

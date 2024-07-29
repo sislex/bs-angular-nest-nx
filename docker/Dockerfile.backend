@@ -10,11 +10,12 @@ COPY package*.json ./
 RUN npm install
 
 # Копируем файлы проекта
-COPY ../dist/apps/back-app .
+COPY ../dist/apps/back-app .back-app
+COPY ../dist/apps/front-app/server .front-app
 
 # Открываем порт для Node.js
 EXPOSE 3000
 
 # Команда для запуска приложения
-CMD ["node", "main.js"]
+CMD ["node", "back-app/main.js"]
 

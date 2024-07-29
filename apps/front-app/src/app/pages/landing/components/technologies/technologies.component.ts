@@ -1,6 +1,7 @@
-import { Component } from '@angular/core'
-import { sponsoredData, SponsorsType } from '../../data'
+import { Component, OnInit } from '@angular/core';
 import { SimplebarAngularModule } from 'simplebar-angular'
+import { Technologies } from '../../../../../../../back-app/src/entities/technologies.entity';
+import { TechnologiesService } from '../../../../services/technologies.service';
 
 @Component({
   selector: 'app-technologies',
@@ -11,6 +12,15 @@ import { SimplebarAngularModule } from 'simplebar-angular'
   templateUrl: './technologies.component.html',
   styleUrl: './technologies.component.scss',
 })
-export class TechnologiesComponent {
-  allSponsoredDetail: SponsorsType[] = sponsoredData;
+export class TechnologiesComponent implements OnInit {
+  allSponsoredDetail: Technologies[] = [];
+
+  constructor(private technologiesService: TechnologiesService) {}
+
+  ngOnInit(): void {
+    this.technologiesService.getTechnologies().subscribe((data: Technologies[]) => {
+      this.allSponsoredDetail = data;
+    });
+
+  }
 }

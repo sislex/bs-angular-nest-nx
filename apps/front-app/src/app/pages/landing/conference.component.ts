@@ -1,17 +1,19 @@
-import {Component} from '@angular/core'
-import { AboutComponent } from './components/about/about.component'
-import { StatisticsComponent } from './components/statistics/statistics.component'
-import { TargetComponent } from './components/target/target.component'
-import { DevelopersComponent } from './components/developers/developers.component'
-import { TechnologiesComponent } from './components/technologies/technologies.component'
-import { ContactComponent } from './components/contact/contact.component'
-import { FooterComponent } from './components/footer/footer.component'
-import { NavigationBarComponent } from './components/navigation-bar-1/navigation-bar.component'
+import { AfterViewInit, ChangeDetectorRef, Component, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { AboutComponent } from './components/about/about.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { TargetComponent } from './components/target/target.component';
+import { DevelopersComponent } from './components/developers/developers.component';
+import { TechnologiesComponent } from './components/technologies/technologies.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavigationBarComponent } from './components/navigation-bar-1/navigation-bar.component';
 
 export interface catalogI {
   name: string;
   url: string;
 }
+
 
 @Component({
   selector: 'app-landings-conference',
@@ -27,9 +29,9 @@ export interface catalogI {
     FooterComponent,
   ],
   templateUrl: './conference.component.html',
-  styles: ``,
+  styles: [],
 })
-export class ConferenceComponent {
+export class ConferenceComponent implements AfterViewInit{
   catalog: catalogI[] = [
     {name: 'About', url: '#about'},
     {name: 'Statistics', url: '#statistics'},
@@ -39,4 +41,26 @@ export class ConferenceComponent {
     {name: 'Technologies', url: '#technologies'},
   ];
 
+  isBrowser = false;
+  isReady= false
+
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    private cdr: ChangeDetectorRef
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  ngAfterViewInit(): void {
+    if (this.isBrowser) {
+      setTimeout(() => {
+        this.isReady = true;
+      }, 3000);
+
+      this.cdr.detectChanges();
+    }
+
+
+  }
 }
