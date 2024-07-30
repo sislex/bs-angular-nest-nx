@@ -7,16 +7,19 @@ WORKDIR /app
 # Копируем файлы package.json и package-lock.json
 COPY package*.json ./
 
+# Устанавливаем зависимости
+RUN npm install
+
 # Копируем файлы проекта
 COPY ./dist ./dist
 
-# Устанавливаем зависимости
-# RUN npm install
-
-RUN npm install --only=production
-
-# Открываем порт для Node.js
+# Открываем порты для приложения
+EXPOSE 3000
 EXPOSE 4000
 
-# Команда для запуска приложения
-CMD ["node", "dist/apps/front-app/server/main.js"]
+# Копируем скрипт запуска
+COPY ./start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
+# Команда для запуска скрипта
+CMD ["/app/start.sh"]
