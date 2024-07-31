@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SimplebarAngularModule} from "simplebar-angular";
 import { TeamsService } from '../../../../services/teams.service';
-import { Teams } from '../../../../../../../back-app/src/entities/team.entity';
+import { Teams } from '@back-app/entities/team.entity';
 
 @Component({
   selector: 'app-developers',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Technologies } from '../../../../back-app/src/entities/technologies.entity';
+import { Technologies } from '@back-app/entities/technologies.entity';
 
 @Injectable({ providedIn: 'root' })
 export class TechnologiesService {

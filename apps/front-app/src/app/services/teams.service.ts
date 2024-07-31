@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Teams } from '../../../../back-app/src/entities/team.entity';
+import { Teams } from '@back-app/entities/team.entity';
 
 @Injectable({ providedIn: 'root' })
 export class TeamsService {
