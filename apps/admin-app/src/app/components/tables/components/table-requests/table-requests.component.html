@@ -1,0 +1,53 @@
+<table mat-table [dataSource]="requests" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="message">
+    <th mat-header-cell *matHeaderCellDef> Message </th>
+    <td mat-cell *matCellDef="let element"> {{element.message}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="timestamp">
+    <th mat-header-cell *matHeaderCellDef> Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.timestamp}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="processed">
+    <th mat-header-cell *matHeaderCellDef> Processed </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-slide-toggle
+        [(ngModel)]="element.processed"
+        [checked]="element.processed === 1"
+        (change)="element.processed = $event.checked ? 1 : 0">
+      </mat-slide-toggle>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="userName">
+    <th mat-header-cell *matHeaderCellDef> Name of the person who processed the application </th>
+    <td mat-cell *matCellDef="let element"> {{element.timestamp}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="timestampProcessed">
+    <th mat-header-cell *matHeaderCellDef> Date of processing </th>
+    <td mat-cell *matCellDef="let element"> {{element.timestamp}} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

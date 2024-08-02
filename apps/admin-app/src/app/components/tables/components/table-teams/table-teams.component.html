@@ -1,0 +1,78 @@
+<h2>Team</h2>
+
+<table mat-table [dataSource]="teams" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let element">{{element.description}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="free">
+    <th mat-header-cell *matHeaderCellDef> Free </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-slide-toggle
+        [(ngModel)]="element.free"
+        [checked]="element.free === 1"
+        (change)="element.free = $event.checked ? 1 : 0">
+      </mat-slide-toggle>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="photo">
+    <th mat-header-cell *matHeaderCellDef> Photo </th>
+    <td mat-cell *matCellDef="let element">{{element.photo}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="update">
+    <th mat-header-cell *matHeaderCellDef> Update </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-mini-fab (click)="buttonClick(element.id, element.name, 'update')">
+        <mat-icon>keyboard_double_arrow_up</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef> Delete </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-mini-fab (click)="buttonClick(element.id, element.name, 'delete')">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<!--<table>-->
+<!--  <tr mat-row>-->
+<!--    <td></td> &lt;!&ndash; Пустая ячейка для Id, который будет сгенерирован &ndash;&gt;-->
+<!--    <td>-->
+<!--      <input [(ngModel)]="newTeam.name" placeholder="Enter name" />-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <input [(ngModel)]="newTeam.description" placeholder="Enter description" />-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <mat-slide-toggle [(ngModel)]="newTeam.free" [checked]="newTeam.free === 1"></mat-slide-toggle>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <input [(ngModel)]="newTeam.photo" placeholder="Enter photo URL" />-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <button mat-button (click)="addTeam()">Add</button>-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--</table>-->

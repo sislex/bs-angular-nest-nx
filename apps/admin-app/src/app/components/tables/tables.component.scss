@@ -1,0 +1,30 @@
+.tab {
+  width: 95%;
+  padding: 10px;
+}
+
+.example-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #555;
+  background: #eee;
+  overflow: hidden;
+
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .butt {
+      width: 90%;
+      margin: 5px;
+    }
+
+    .drawer-content {
+      overflow: hidden;
+    }
+
+  }
+}
+

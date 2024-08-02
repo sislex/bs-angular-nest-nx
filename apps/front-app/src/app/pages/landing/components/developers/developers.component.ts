@@ -20,7 +20,6 @@ export class DevelopersComponent implements OnInit {
   ngOnInit(): void {
     this.teamsService.getTeams().subscribe((data: Teams[]) => {
       this.speakerData = data;
-      console.log('123', this.speakerData);
     });
 
   }

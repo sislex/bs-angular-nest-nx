@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SimplebarAngularModule } from 'simplebar-angular'
-import { TechnologiesService } from '../../../../services/technologies.service';
 import { Technologies } from '@back-app/entities/technologies.entity';
+import { TechnologiesService } from '../../../../services/technologies.service';
 
 @Component({
   selector: 'app-technologies',

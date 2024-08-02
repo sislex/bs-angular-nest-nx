@@ -11,6 +11,10 @@ export class RequestsService {
     private requestsRepository: Repository<Requests>,
   ) {}
 
+  async findAll(): Promise<Requests[]> {
+    return this.requestsRepository.find();
+  }
+
   create(createRequestDto: CreateRequestDto): Promise<Requests> {
     const requests = this.requestsRepository.create(createRequestDto);
     return this.requestsRepository.save(requests);
