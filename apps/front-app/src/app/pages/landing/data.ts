@@ -72,9 +72,9 @@ export const targetData: TargetDataType[] = [
     category: 'Startups and Innovative Companies',
     content: {
       id: 'companies',
-      text: 'Our team is capable of tackling any challenge. Regardless of whether you are a large corporation or a small startup, we are here to help solve your problems and elevate your product to a new level. Collaborating with us is:',
+      text: 'Our teams is capable of tackling any challenge. Regardless of whether you are a large corporation or a small startup, we are here to help solve your problems and elevate your product to a new level. Collaborating with us is:',
       list: [
-        'Flexibility and Innovation: Our team helps startups implement innovative ideas and quickly adapt to market changes.',
+        'Flexibility and Innovation: Our teams helps startups implement innovative ideas and quickly adapt to market changes.',
         'Technological Solutions: We offer technical solutions that can serve as the foundation for successful businesses.',
         'Attracting Investments: Our technologies create prototypes and minimum viable products that attract investors.',
         'Product Scaling: We ensure product scalability, which is critical for startup growth.',
@@ -87,9 +87,9 @@ export const targetData: TargetDataType[] = [
       id: 'corporations',
       text: ``,
       list: [
-        'Process Optimization: Our team optimizes processes, increasing efficiency and reducing costs.',
+        'Process Optimization: Our teams optimizes processes, increasing efficiency and reducing costs.',
         'Product Innovations: We introduce innovations into products, helping corporations stay industry leaders.',
-        'Digital Transformation: Our team leads digital transformation by integrating new technologies into business models.',
+        'Digital Transformation: Our teams leads digital transformation by integrating new technologies into business models.',
         'Data Security: Our technologies’ solutions ensure corporate data protection and information security.',
       ],
     },

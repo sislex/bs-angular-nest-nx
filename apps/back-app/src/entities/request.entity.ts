@@ -3,14 +3,20 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity('requests')
 export class Requests {
   @PrimaryGeneratedColumn()
-  id: number;
+  id?: number;
 
   @Column()
-  email: string;
+  email?: string;
 
   @Column()
-  name: string;
+  name?: string;
 
   @Column()
-  message: string;
+  message?: string;
+
+  @Column()
+  timestamp?: number;
+
+  @Column()
+  processed?: number;
 }

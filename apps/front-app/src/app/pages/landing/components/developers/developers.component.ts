@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SimplebarAngularModule} from "simplebar-angular";
 import { TeamsService } from '../../../../services/teams.service';
-import { Teams } from '../../../../../../../back-app/src/entities/team.entity';
+import { Teams } from '@back-app/entities/team.entity';
 
 @Component({
   selector: 'app-developers',
@@ -20,7 +20,6 @@ export class DevelopersComponent implements OnInit {
   ngOnInit(): void {
     this.teamsService.getTeams().subscribe((data: Teams[]) => {
       this.speakerData = data;
-      console.log('123', this.speakerData);
     });
 
   }

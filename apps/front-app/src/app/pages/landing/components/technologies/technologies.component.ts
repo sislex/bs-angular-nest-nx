@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SimplebarAngularModule } from 'simplebar-angular'
-import { Technologies } from '../../../../../../../back-app/src/entities/technologies.entity';
+import { Technologies } from '@back-app/entities/technologies.entity';
 import { TechnologiesService } from '../../../../services/technologies.service';
 
 @Component({
