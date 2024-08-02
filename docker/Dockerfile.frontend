@@ -4,16 +4,8 @@ FROM node:20.14
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем файлы package.json и package-lock.json
-COPY package*.json ./
-
 # Копируем файлы проекта
 COPY ./dist ./dist
-
-# Устанавливаем зависимости
-# RUN npm install
-
-RUN npm install --only=production
 
 # Открываем порт для Node.js
 EXPOSE 4000

@@ -5,7 +5,7 @@ FROM node:20.14
 WORKDIR /app
 
 # Копируем файлы package.json и package-lock.json
-COPY package*.json ./
+COPY docker/package*.json ./
 
 # Устанавливаем зависимости
 RUN npm install

@@ -1,0 +1,20 @@
+{
+  "name": "@bs-angular-nest-nx/source",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "nx": "nx",
+    "serve:front": "nx serve front-app",
+    "serve:back": "nx serve back-app",
+    "serve-ssr:front": "nx serve-ssr front-app",
+    "build:back": "nx build back-app",
+    "build:front": "nx build front-app",
+    "build-ssr:front": "nx run front-app:server:production"
+  },
+  "private": true,
+  "dependencies": {
+    "@nestjs/platform-express": "^10.0.2",
+    "@nestjs/typeorm": "^10.0.2",
+    "mysql2": "^3.10.3"
+  }
+}
