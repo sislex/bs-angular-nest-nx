@@ -9,9 +9,9 @@ services:
       MYSQL_DATABASE: best_solutions_db
     ports:
       - '3307:3306'
-#    volumes:
-#      - mysql-data:/var/lib/mysql
-#      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - app-network
 
@@ -28,25 +28,6 @@ services:
       - mysql
     networks:
       - app-network
-
-#  all:
-#    build:
-#      context: .
-#      dockerfile: docker/Dockerfile.all
-#    container_name: all-app
-#    depends_on:
-#      - mysql
-#    environment:
-#      DATABASE_HOST: mysql
-#      DATABASE_PORT: 3306
-#      DATABASE_USER: root
-#      DATABASE_PASSWORD: root
-#      DATABASE_NAME: best_solutions_db
-#    ports:
-#      - '3000:3000'
-#      - '4000:4000'
-#    networks:
-#      - app-network
 
   backend:
     build:
@@ -65,18 +46,6 @@ services:
       - '3000:3000'
     networks:
       - app-network
-#
-#  frontend:
-#    build:
-#      context: .
-#      dockerfile: docker/Dockerfile.frontend
-#    container_name: front-app
-#    ports:
-#      - '4000:4000'
-#    depends_on:
-#      - backend
-#    networks:
-#      - app-network
 
 volumes:
   mysql-data:
