@@ -12,4 +12,9 @@ export class TeamsService {
   getTeams(): Observable<Teams[]> {
     return this.http.get<Teams[]>(this.baseUrl);
   }
+
+  deleteTeams(id: number): Observable<void> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<void>(url);
+  }
 }

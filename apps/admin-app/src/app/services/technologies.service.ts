@@ -12,4 +12,9 @@ export class TechnologiesService {
   getTechnologies(): Observable<Technologies[]> {
     return this.http.get<Technologies[]>(this.baseUrl);
   }
+
+  deleteTechnologies(id: number): Observable<void> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<void>(url);
+  }
 }

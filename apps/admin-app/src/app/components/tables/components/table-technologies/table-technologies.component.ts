@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Technologies } from '@back-app/entities/technologies.entity';
 import { MatTableModule } from '@angular/material/table';
@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatIcon } from '@angular/material/icon';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @Component({
@@ -19,17 +20,31 @@ import { MatSlideToggle } from '@angular/material/slide-toggle';
     FormsModule,
     MatIcon,
     MatMiniFabButton,
-    MatSlideToggle
+    MatSlideToggle,
+    MatExpansionModule
   ],
   templateUrl: './table-technologies.component.html',
   styleUrl: './table-technologies.component.scss',
 })
 export class TableTechnologiesComponent {
+  @Output() emitter = new EventEmitter();
   @Input() technologies: Technologies[] = [];
 
   constructor(
     private http: HttpClient
   ) {}
+
+  buttonClick(id: any, name:string, note: string) {
+
+    const message = {
+      event: 'TableTechnologiesComponent:BUTTON_CLICK',
+      id,
+      name,
+      note,
+    };
+
+    this.emitter.emit(message);
+  }
 
   updateTechnologies(technologies: any) {
     this.http.put(`/api/teams/${technologies.id}`, technologies)

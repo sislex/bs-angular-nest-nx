@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Teams } from '@back-app/entities/team.entity';
 import { MatTableModule } from '@angular/material/table';
@@ -8,6 +8,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 export interface Team {
@@ -28,16 +29,30 @@ export interface Team {
     MatSlideToggleModule,
     MatButtonModule,
     MatIconModule,
+    MatExpansionModule,
   ],
   templateUrl: './table-teams.component.html',
   styleUrl: './table-teams.component.scss',
 })
 export class TableTeamsComponent {
+  @Output() emitter = new EventEmitter();
   @Input() teams: Teams[] = [];
 
   constructor(
     private http: HttpClient
   ) {}
+
+  buttonClick(id: any, name:string, note: string) {
+
+    const message = {
+      event: 'TableTeamsComponent:BUTTON_CLICK',
+      id,
+      name,
+      note,
+    };
+
+    this.emitter.emit(message);
+  }
 
   updateTeam(team: any) {
     this.http.put(`/api/teams/${team.id}`, team)

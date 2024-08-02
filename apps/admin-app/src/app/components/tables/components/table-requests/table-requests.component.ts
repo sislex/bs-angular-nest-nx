@@ -4,6 +4,8 @@ import { MatTableModule } from '@angular/material/table';
 import { Requests } from '@back-app/entities/request.entity';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 @Component({
   selector: 'app-table-requests',
@@ -12,8 +14,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     MatTableModule,
     MatSlideToggle,
-    FormsModule
-
+    FormsModule,
+    MatExpansionModule,
   ],
   templateUrl: './table-requests.component.html',
   styleUrl: './table-requests.component.scss',

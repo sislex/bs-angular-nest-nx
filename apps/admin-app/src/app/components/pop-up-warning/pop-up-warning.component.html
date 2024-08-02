@@ -1,0 +1,25 @@
+<mat-card class="example-card" appearance="outlined">
+
+  <mat-card-header>
+    <mat-card-title class="warn">
+      <strong>Warning!</strong></mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <b>
+      Are you sure you want to delete the object:
+    </b>
+    <p>
+      Id: {{ data.data.id }}
+  </p>
+    <p>
+      Name: {{ data.data.name }}
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button (click)="buttonClick('ok')">Ok</button>
+    <button mat-button (click)="buttonClick('cancel')">Cancel</button>
+  </mat-card-actions>
+
+</mat-card>

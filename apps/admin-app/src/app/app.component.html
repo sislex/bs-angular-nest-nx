@@ -1,5 +1,5 @@
-@if (permission === 1) {
-  <app-update-form></app-update-form>
+@if (permission === 0) {
+<!--  <app-update-form></app-update-form>-->
   <app-main (emitter)="events($event)"></app-main>
 } @else {
   <app-login (emitter)="events($event)"></app-login>

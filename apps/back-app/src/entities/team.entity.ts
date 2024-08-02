@@ -5,15 +5,15 @@ export class Teams {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   name?: string;
 
-  @Column()
+  @Column({ type: 'text' })
   description?: string;
 
-  @Column()
+  @Column({ type: 'text' })
   photo?: string;
 
-  @Column()
+  @Column({ type: 'tinyint', default: 0})
   free?: number;
 }

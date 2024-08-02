@@ -9,6 +9,8 @@ import { TableTeamsContainerComponent } from '../../containers/table-teams-conta
 import {
   TableTechnologiesContainerComponent
 } from '../../containers/table-technologies-container/table-technologies-container.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-tables',
@@ -19,9 +21,17 @@ import {
     TableTechnologiesComponent,
     TableRequestsContainerComponent,
     TableTeamsContainerComponent,
-    TableTechnologiesContainerComponent
+    TableTechnologiesContainerComponent,
+    MatSidenavModule,
+    MatButtonModule
   ],
   templateUrl: './tables.component.html',
   styleUrl: './tables.component.scss',
 })
-export class TablesComponent {}
+export class TablesComponent {
+  currentTab = 'requests';
+
+  showTab(tabName: string) {
+    this.currentTab = tabName;
+  }
+}

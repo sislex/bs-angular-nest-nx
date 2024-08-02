@@ -1,5 +1,20 @@
-<div class="body">
-  <app-table-requests-container class="tab"></app-table-requests-container>
-  <app-table-teams-container class="tab"></app-table-teams-container>
-  <app-table-technologies-container class="tab"></app-table-technologies-container>
-</div>
+<mat-drawer-container class="example-container">
+
+  <mat-drawer class="drawer" mode="side" opened >
+    <button mat-button class="butt" (click)="showTab('requests')"> Requests </button>
+    <button mat-button class="butt" (click)="showTab('team')"> Team </button>
+    <button mat-button class="butt" (click)="showTab('technologies')"> Technologies </button>
+  </mat-drawer>
+
+  <mat-drawer-content class="drawer-content">
+    @if (currentTab === 'requests') {
+      <app-table-requests-container class="tab"></app-table-requests-container>
+    } @else if (currentTab === 'team') {
+      <app-table-teams-container class="tab"></app-table-teams-container>
+    } @else if (currentTab === 'technologies') {
+      <app-table-technologies-container class="tab"></app-table-technologies-container>
+    }
+  </mat-drawer-content>
+
+</mat-drawer-container>
+

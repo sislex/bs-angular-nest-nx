@@ -5,12 +5,12 @@ export class Technologies {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   name?: string;
 
-  @Column()
+  @Column({ type: 'text' })
   description?: string;
 
-  @Column()
+  @Column({ type: 'text' })
   photo?: string;
 }
