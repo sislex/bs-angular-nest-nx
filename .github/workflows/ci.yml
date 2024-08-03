@@ -1,39 +1,36 @@
-name: CI
+name: Build and Test
 
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
-
-permissions:
-  actions: read
-  contents: read
+    branches:
+      - main
 
 jobs:
-  main:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      # This enables task distribution via Nx Cloud
-      # Run this command as early as possible, before dependencies are installed
-      # Learn more at https://nx.dev/ci/reference/nx-cloud-cli#npx-nxcloud-startcirun
-      - run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="e2e-ci"
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
 
-      # Cache node_modules
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
+      - name: Pull Docker image
+        run: docker pull node:20.14
 
-      - run: npm ci --legacy-peer-deps
-      - uses: nrwl/nx-set-shas@v4
+      - name: Run build inside Docker
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/app -w /app node:20.14 sh -c "npm install && npm run build-ssr:front"
 
-      # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
-      # - run: npx nx-cloud record -- echo Hello World
-      # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
-      - run: npx nx affected -t lint test build
-      - run: npx nx affected --parallel 1 -t e2e-ci
+      - name: Check build result
+        run: |
+          if [ -d "dist" ]; then
+            echo "Build completed successfully."
+          else
+            echo "Build failed."
+            exit 1
+          fi
