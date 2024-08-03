@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class RequestService {
   private apiUrl = `http://${window.location.hostname}:3000/requests`;
 
+
   constructor(private http: HttpClient) {
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SimplebarAngularModule} from "simplebar-angular";
 import { TeamsService } from '../../../../services/teams.service';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { Teams } from '@back-app/entities/team.entity';
 
 @Component({

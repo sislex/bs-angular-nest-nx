@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SimplebarAngularModule } from 'simplebar-angular'
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { Technologies } from '@back-app/entities/technologies.entity';
 import { TechnologiesService } from '../../../../services/technologies.service';
 
