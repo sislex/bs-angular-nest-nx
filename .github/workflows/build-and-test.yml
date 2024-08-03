@@ -28,7 +28,7 @@ jobs:
 
       - name: Check build result
         run: |
-          if [ -d "dist" ]; then
+          if [ -d "dist/apps/front-app/browser" ] && [ -d "dist/apps/front-app/server" ] && [ -d "dist/apps/back-app" ]; then
             echo "Build completed successfully."
           else
             echo "Build failed."
