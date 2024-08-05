@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - release
+      - main
 
 jobs:
   deploy:
@@ -33,13 +33,10 @@ jobs:
             git checkout release
             git pull origin release
 
-            # Ensure Node.js and npm are in the PATH
-            export PATH=$PATH:/usr/local/bin:/usr/bin:/bin
-
-            # Verify Node.js and npm installation
-            node -v
-            npm -v
+            # Use full paths for node and npm
+            /root/.nvm/versions/node/v20.14.0/bin/node -v
+            /root/.nvm/versions/node/v20.14.0/bin/npm -v
 
             # Install project dependencies
-            npm install
+            /root/.nvm/versions/node/v20.14.0/bin/npm install
           EOF
