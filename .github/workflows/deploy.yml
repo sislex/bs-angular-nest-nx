@@ -25,26 +25,4 @@ jobs:
 
             rm -rf bs-angular-nest-nx/
 
-#            # Ensure deployment directory exists
-#            if [ ! -d "$DEPLOY_DIR" ]; then
-#              mkdir -p $DEPLOY_DIR
-#            fi
-#
-#            cd $DEPLOY_DIR
-#
-#            # Clone the repository if it doesn't exist
-#            if [ ! -d ".git" ]; then
-#              git clone git@github.com:sislex/bs-angular-nest-nx.git .
-#            fi
-#
-#            git fetch
-#            git checkout release
-#            git pull origin release
-#
-#            # Use full paths for node and npm
-#            /root/.nvm/versions/node/v20.14.0/bin/node -v
-#            /root/.nvm/versions/node/v20.14.0/bin/npm -v
-#
-#            # Install project dependencies
-#            /root/.nvm/versions/node/v20.14.0/bin/npm install
           EOF
