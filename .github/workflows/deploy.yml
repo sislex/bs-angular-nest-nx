@@ -24,7 +24,7 @@ jobs:
             cd bs-angular-nest-nx/
             git branch
             node -v
-            git checkout release
-            git pull
-            npm ci
+#            git checkout release
+#            git pull
+#            npm ci
           EOF
