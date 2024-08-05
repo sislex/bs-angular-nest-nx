@@ -1,21 +1,18 @@
 <main class="page-wrapper">
 
   <app-component-navigation-bar [catalog]="catalog" />
-  @if (isReady) {
-    <app-about id="about"/>
 
-    <app-statistics id="statistics"/>
+  <app-about id="about"/>
 
-    <app-conference-target id="clients"/>
+  <app-statistics id="statistics"/>
 
-    <app-developers id="team"/>
+  <app-conference-target id="clients"/>
 
-    <app-conference-contact id="contact" />
+  <app-developers id="team"/>
 
-    <app-technologies id="technologies"/>
-  } @else {
-    Hi
-  }
+  <app-conference-contact id="contact" />
+
+  <app-technologies id="technologies"/>
 </main>
 <!--@if (isBrowser){-->
 <app-conference-footer [catalog]="catalog"/>
