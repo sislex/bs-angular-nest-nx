@@ -23,28 +23,28 @@ jobs:
           ssh -o StrictHostKeyChecking=no -p 2200 root@178.159.45.219 << 'EOF'
             DEPLOY_DIR="$HOME/bs-angular-nest-nx"
 
-            rm -rf "$DEPLOY_DIR"
+            rm -rf $DEPLOY_DIR
 
-            # Ensure deployment directory exists
-            if [ ! -d "$DEPLOY_DIR" ]; then
-              mkdir -p $DEPLOY_DIR
-            fi
-
-            cd $DEPLOY_DIR
-
-            # Clone the repository if it doesn't exist
-            if [ ! -d ".git" ]; then
-              git clone git@github.com:sislex/bs-angular-nest-nx.git .
-            fi
-
-            git fetch
-            git checkout release
-            git pull origin release
-
-            # Use full paths for node and npm
-            /root/.nvm/versions/node/v20.14.0/bin/node -v
-            /root/.nvm/versions/node/v20.14.0/bin/npm -v
-
-            # Install project dependencies
-            /root/.nvm/versions/node/v20.14.0/bin/npm install
+#            # Ensure deployment directory exists
+#            if [ ! -d "$DEPLOY_DIR" ]; then
+#              mkdir -p $DEPLOY_DIR
+#            fi
+#
+#            cd $DEPLOY_DIR
+#
+#            # Clone the repository if it doesn't exist
+#            if [ ! -d ".git" ]; then
+#              git clone git@github.com:sislex/bs-angular-nest-nx.git .
+#            fi
+#
+#            git fetch
+#            git checkout release
+#            git pull origin release
+#
+#            # Use full paths for node and npm
+#            /root/.nvm/versions/node/v20.14.0/bin/node -v
+#            /root/.nvm/versions/node/v20.14.0/bin/npm -v
+#
+#            # Install project dependencies
+#            /root/.nvm/versions/node/v20.14.0/bin/npm install
           EOF
