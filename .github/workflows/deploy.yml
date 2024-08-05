@@ -27,7 +27,7 @@ jobs:
 
             #Clone the repository if it doesn't exist
             if [ ! -d ".git" ]; then
-              git clone git@github.com:sislex/bs-angular-nest-nx.git .
+              git clone git@github.com:sislex/bs-angular-nest-nx.git
             fi
 
           EOF
