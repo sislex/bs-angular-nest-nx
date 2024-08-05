@@ -23,12 +23,12 @@ jobs:
           ssh -o StrictHostKeyChecking=no -p 2200 root@178.159.45.219 << 'EOF'
             DEPLOY_DIR="$HOME/bs-angular-nest-nx"
 
-            # rm -rf bs-angular-nest-nx/
+            rm -rf bs-angular-nest-nx/
 
             #Clone the repository if it doesn't exist
-            # if [ ! -d ".git" ]; then
-              # git clone https://github.com/sislex/bs-angular-nest-nx.git
-            # fi
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/sislex/bs-angular-nest-nx.git
+            fi
 
             cd bs-angular-nest-nx
 
@@ -41,9 +41,9 @@ jobs:
             node -v
             npm -v
 
-            # npm ci
+            npm ci
 
-            # npm run build-ssr:front
+            npm run build-ssr:front
 
             if [ -d "dist/apps/front-app/browser" ] && [ -d "dist/apps/front-app/server" ] && [ -d "dist/apps/back-app" ]; then
               echo "Build completed successfully."
