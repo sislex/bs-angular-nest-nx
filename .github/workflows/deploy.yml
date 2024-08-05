@@ -23,7 +23,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -p 2200 root@178.159.45.219 << 'EOF'
             DEPLOY_DIR="$HOME/bs-angular-nest-nx"
 
-            rm -rf $DEPLOY_DIR
+            rm -rf bs-angular-nest-nx/
 
 #            # Ensure deployment directory exists
 #            if [ ! -d "$DEPLOY_DIR" ]; then
