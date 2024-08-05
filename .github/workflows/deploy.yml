@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - release
+  pull_request:
+    branches:
+      - release
 
 jobs:
   deploy:
@@ -45,10 +48,24 @@ jobs:
 
             npm run build-ssr:front
 
-            if [ -d "dist/apps/front-app/browser" ] && [ -d "dist/apps/front-app/server" ] && [ -d "dist/apps/back-app" ]; then
+            if [ -d "dist/apps/front-app/browser" ]; then
               echo "Build completed successfully."
             else
-              echo "Build failed."
+              echo "Build failed [front-app/browser]."
+              exit 1
+            fi
+
+             if [ -d "dist/apps/front-app/server" ]; then
+              echo "Build completed successfully."
+            else
+              echo "Build failed [front-app/server]."
+              exit 1
+            fi
+
+            if [ -d "dist/apps/back-app" ]; then
+              echo "Build completed successfully."
+            else
+              echo "Build failed [back-app]."
               exit 1
             fi
 

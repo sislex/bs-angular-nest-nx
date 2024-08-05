@@ -11,7 +11,7 @@
     "build:back": "nx build back-app",
     "build:front": "nx build front-app",
     "build:admin": "nx build admin-app",
-    "build-ssr:front": "nx run front-app:server:production"
+    "build-ssr:front": "nx run front-app:server:production --verbose"
   },
   "private": true,
   "dependencies": {
