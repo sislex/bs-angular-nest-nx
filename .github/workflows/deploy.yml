@@ -22,9 +22,5 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -p 2200 root@178.159.45.219 << 'EOF'
             cd bs-angular-nest-nx/
-            git branch
             node -v
-#            git checkout release
-#            git pull
-#            npm ci
           EOF
