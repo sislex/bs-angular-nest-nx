@@ -41,9 +41,9 @@ jobs:
             node -v
             npm -v
 
-            npm ci
+            # npm ci
 
-            npm run build-ssr:front
+            # npm run build-ssr:front
 
             if [ -d "dist/apps/front-app/browser" ] && [ -d "dist/apps/front-app/server" ] && [ -d "dist/apps/back-app" ]; then
               echo "Build completed successfully."
