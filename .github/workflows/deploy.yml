@@ -21,7 +21,14 @@ jobs:
       - name: Clone repository and switch to release branch
         run: |
           ssh -o StrictHostKeyChecking=no -p 2200 root@178.159.45.219 << 'EOF'
-            cd bs-angular-nest-nx/
+            cd /path/to/deployment/directory
+
+            if [ ! -d "bs-angular-nest-nx" ]; then
+              git clone git@github.com:sislex/bs-angular-nest-nx.git
+            fi
+
+            cd bs-angular-nest-nx
+
             git fetch
             git checkout release
             git pull origin release
@@ -29,11 +36,10 @@ jobs:
             # Ensure Node.js and npm are in the PATH
             export PATH=$PATH:/usr/local/bin:/usr/bin:/bin
 
-             # Verify Node.js and npm installation
+            # Verify Node.js and npm installation
             node -v
             npm -v
 
             # Install project dependencies
             npm install
-
           EOF
