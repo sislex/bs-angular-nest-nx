@@ -14,7 +14,6 @@ export interface catalogI {
   url: string;
 }
 
-
 @Component({
   selector: 'app-landings-conference',
   standalone: true,
@@ -31,7 +30,7 @@ export interface catalogI {
   templateUrl: './conference.component.html',
   styles: [],
 })
-export class ConferenceComponent implements AfterViewInit{
+export class ConferenceComponent {
   catalog: catalogI[] = [
     {name: 'About', url: '#about'},
     {name: 'Statistics', url: '#statistics'},
@@ -42,7 +41,6 @@ export class ConferenceComponent implements AfterViewInit{
   ];
 
   isBrowser = false;
-  isReady= true
 
 
   constructor(
@@ -52,15 +50,4 @@ export class ConferenceComponent implements AfterViewInit{
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
-  ngAfterViewInit(): void {
-    if (this.isBrowser) {
-      setTimeout(() => {
-        this.isReady = true;
-      }, 3000);
-
-      this.cdr.detectChanges();
-    }
-
-
-  }
 }

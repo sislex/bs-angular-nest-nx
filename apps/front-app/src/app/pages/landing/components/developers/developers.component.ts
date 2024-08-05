@@ -19,6 +19,7 @@ export class DevelopersComponent implements OnInit {
   constructor(private teamsService: TeamsService) {}
 
   ngOnInit(): void {
+    console.log('getTeams');
     this.teamsService.getTeams().subscribe((data: Teams[]) => {
       this.speakerData = data;
     });
