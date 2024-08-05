@@ -30,4 +30,12 @@ jobs:
               git clone https://github.com/sislex/bs-angular-nest-nx.git
             fi
 
+            cd bs-angular-nest-nx
+
+            git fetch
+            git checkout release
+            git pull origin release
+
+
+
           EOF
