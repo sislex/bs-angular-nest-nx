@@ -39,7 +39,6 @@ jobs:
             /root/.nvm/versions/node/v20.14.0/bin/node -v
             /root/.nvm/versions/node/v20.14.0/bin/npm -v
 
-            /root/.nvm/versions/node/v20.14.0/bin/npm i
 
 
 
