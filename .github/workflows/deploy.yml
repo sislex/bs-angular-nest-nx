@@ -26,9 +26,9 @@ jobs:
             # rm -rf bs-angular-nest-nx/
 
             #Clone the repository if it doesn't exist
-            if [ ! -d ".git" ]; then
+            # if [ ! -d ".git" ]; then
               # git clone https://github.com/sislex/bs-angular-nest-nx.git
-            fi
+            # fi
 
             cd bs-angular-nest-nx
 
