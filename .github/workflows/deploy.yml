@@ -21,7 +21,7 @@ jobs:
       - name: Clone repository and switch to release branch
         run: |
           ssh -o StrictHostKeyChecking=no -p 2200 root@178.159.45.219 << 'EOF'
-            cd /path/to/deployment/directory
+            cd ~/bs-angular-nest-nx
 
             if [ ! -d "bs-angular-nest-nx" ]; then
               git clone git@github.com:sislex/bs-angular-nest-nx.git
