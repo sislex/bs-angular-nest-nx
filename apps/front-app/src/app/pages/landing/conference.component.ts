@@ -42,7 +42,7 @@ export class ConferenceComponent implements AfterViewInit{
   ];
 
   isBrowser = false;
-  isReady= false
+  isReady= true
 
 
   constructor(
