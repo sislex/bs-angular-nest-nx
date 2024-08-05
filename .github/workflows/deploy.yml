@@ -41,6 +41,8 @@ jobs:
             node -v
             npm -v
 
+            npm ci
+
 
 
 
