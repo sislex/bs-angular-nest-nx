@@ -20,7 +20,7 @@ jobs:
 
       - name: Clone repository and switch to release branch
         run: |
-          ssh -o StrictHostKeyChecking=no -p 2200 your_user@178.159.45.219 << 'EOF'
+          ssh -o StrictHostKeyChecking=no -p 2200 root@178.159.45.219 << 'EOF'
             cd bs-angular-nest-nx/
             git checkout release
             git pull origin release
