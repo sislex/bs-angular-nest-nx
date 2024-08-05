@@ -36,7 +36,7 @@ jobs:
             git checkout release
             git pull origin release
 
-            node -v
+            /root/.nvm/versions/node/v20.14.0/bin/node -v
 
 
 
