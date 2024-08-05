@@ -36,6 +36,8 @@ jobs:
             git checkout release
             git pull origin release
 
+            node -v
+
 
 
           EOF
