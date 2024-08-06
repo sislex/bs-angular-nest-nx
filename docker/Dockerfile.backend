@@ -10,11 +10,11 @@ COPY ./ ./
 # Устанавливаем зависимости
 RUN npm ci
 
-# Копируем файлы проекта
-COPY ./dist/apps/back-app ./back-app
+# Собираем билд
+RUN npm run build:back
 
 # Открываем порты для приложения
 EXPOSE 3000
 
 # Команда для запуска скрипта
-CMD ["node", "back-app/main.js"]
+CMD ["node", "dist/apps/back-app/main.js"]
