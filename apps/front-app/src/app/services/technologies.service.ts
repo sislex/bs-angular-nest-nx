@@ -6,7 +6,7 @@ import { Technologies } from '@back-app/entities/technologies.entity';
 
 @Injectable({ providedIn: 'root' })
 export class TechnologiesService {
-  private apiUrl = `http://178.159.45.219:3000/technologies`;
+  private apiUrl = `http://185.244.50.198/:3000/technologies`;
 
   constructor(private http: HttpClient) {}
 

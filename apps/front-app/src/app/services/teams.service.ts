@@ -6,7 +6,7 @@ import { Teams } from '@back-app/entities/team.entity';
 
 @Injectable({ providedIn: 'root' })
 export class TeamsService {
-  private apiUrl = `http://178.159.45.219:3000/teams`;
+  private apiUrl = `http://185.244.50.198:3000/teams`;
 
   constructor(private http: HttpClient) {}
 
