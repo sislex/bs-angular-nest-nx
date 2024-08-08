@@ -5,7 +5,6 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
 import { Login } from '@back-app/entities/login.entity';
 import { HttpClient } from '@angular/common/http';
-import { UpdateFormComponent } from './components/update-form/update-form.component';
 
 @Component({
   standalone: true,
@@ -13,7 +12,6 @@ import { UpdateFormComponent } from './components/update-form/update-form.compon
     RouterModule,
     MainComponent,
     LoginComponent,
-    UpdateFormComponent
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',

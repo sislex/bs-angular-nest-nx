@@ -2,9 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Teams } from '../entities/team.entity';
-import { Login } from '../entities/login.entity';
-import { updateTeamsDto } from '../dto/update-teams.dto';
-import { createTeamsDto } from '../dto/create-teams.dto';
+import { UpdateTeamsDto } from '../dto/update-teams.dto';
+import { CreateTeamsDto } from '../dto/create-teams.dto';
 
 @Injectable()
 export class TeamsService {
@@ -13,18 +12,17 @@ export class TeamsService {
     private teamsRepository: Repository<Teams>,
   ) {}
 
-  async create(createTeamsDto: createTeamsDto): Promise<Teams> {
-    const newTeam = this.teamsRepository.create(createTeamsDto);
-    return this.teamsRepository.save(newTeam);
+  async create(createTeamsDto: CreateTeamsDto): Promise<Teams> {
+    const team = this.teamsRepository.create(createTeamsDto);
+    return this.teamsRepository.save(team);
   }
 
   async findAll(): Promise<Teams[]> {
     return this.teamsRepository.find();
   }
 
-  async update(id: any, updateTeamsDto: updateTeamsDto): Promise<Login> {
-    await this.teamsRepository.update(id, updateTeamsDto);
-    return this.teamsRepository.findOne(id);
+  async findOne(id: number): Promise<Teams> {
+    return this.teamsRepository.findOneBy({ id });
   }
 
 
@@ -33,5 +31,15 @@ export class TeamsService {
     if (result.affected === 0) {
       throw new NotFoundException(`Team with ID ${id} not found`);
     }
+  }
+
+  async update(id: number, updateTeamsDto: UpdateTeamsDto): Promise<Teams> {
+    const team = await this.teamsRepository.findOne({ where: { id } });
+    if (!team) {
+      throw new NotFoundException(`Team with ID ${id} not found`);
+    }
+
+    Object.assign(team, updateTeamsDto);
+    return this.teamsRepository.save(team);
   }
 }

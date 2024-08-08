@@ -1,15 +1,15 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { TeamsService } from './teams.service';
 import { Teams } from '../entities/team.entity';
-import { updateTeamsDto } from '../dto/update-teams.dto';
-import { createTeamsDto } from '../dto/create-teams.dto';
+import { UpdateTeamsDto } from '../dto/update-teams.dto';
+import { CreateTeamsDto } from '../dto/create-teams.dto';
 
 @Controller('teams')
 export class TeamsController {
   constructor(private readonly teamsService: TeamsService) {}
 
   @Post()
-  async create(@Body() createTeamsDto: createTeamsDto): Promise<Teams> {
+  async create(@Body() createTeamsDto: CreateTeamsDto): Promise<Teams> {
     return this.teamsService.create(createTeamsDto);
   }
 
@@ -18,13 +18,18 @@ export class TeamsController {
     return this.teamsService.findAll();
   }
 
+  @Get(':id')
+  async findOne(@Param('id') id: string): Promise<Teams> {
+    return this.teamsService.findOne(+id);
+  }
+
   @Put(':id')
-  async updateOne(@Body() updateTeamsDto: updateTeamsDto, @Param('id') id: string) {
-    return await this.teamsService.update(id, updateTeamsDto);
+  async updateTeam(@Param('id') id: any, @Body() updateTeamsDto: UpdateTeamsDto): Promise<Teams> {
+    return this.teamsService.update(+id, updateTeamsDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string): Promise<void> {
     return this.teamsService.remove(id);
   }
 }

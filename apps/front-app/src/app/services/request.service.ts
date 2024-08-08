@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RequestService {
-  private apiUrl = 'http://localhost:3000/requests'; // URL вашего NestJS сервера
+  private baseUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
   sendRequest(requestData: any): Observable<any> {
-    return this.http.post(this.apiUrl, requestData);
+    return this.http.post(`${this.baseUrl}/requests`, requestData);
   }
 }

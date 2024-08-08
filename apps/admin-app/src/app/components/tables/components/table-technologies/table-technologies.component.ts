@@ -3,11 +3,9 @@ import { CommonModule } from '@angular/common';
 import { Technologies } from '@back-app/entities/technologies.entity';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { MatIcon } from '@angular/material/icon';
-import { MatMiniFabButton } from '@angular/material/button';
-import { MatSlideToggle } from '@angular/material/slide-toggle';
-import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 @Component({
@@ -18,10 +16,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatTableModule,
     ReactiveFormsModule,
     FormsModule,
-    MatIcon,
-    MatMiniFabButton,
-    MatSlideToggle,
-    MatExpansionModule
+    MatIconModule,
+    MatButtonModule,
   ],
   templateUrl: './table-technologies.component.html',
   styleUrl: './table-technologies.component.scss',
@@ -30,30 +26,22 @@ export class TableTechnologiesComponent {
   @Output() emitter = new EventEmitter();
   @Input() technologies: Technologies[] = [];
 
-  constructor(
-    private http: HttpClient
-  ) {}
-
-  buttonClick(id: any, name:string, note: string) {
-
+  buttonClick(element: any, note: string) {
     const message = {
       event: 'TableTechnologiesComponent:BUTTON_CLICK',
-      id,
-      name,
+      data: element,
       note,
     };
-
     this.emitter.emit(message);
   }
 
-  updateTechnologies(technologies: any) {
-    this.http.put(`/api/teams/${technologies.id}`, technologies)
-      .subscribe(response => {
-        console.log('Team updated', response);
-      }, error => {
-        console.error('Error updating teams', error);
-      });
-  }
-
   displayedColumns: string[] = ['id', 'name', 'description', 'photo', 'update', 'delete'];
+
+  addClick() {
+    const message = {
+      event: 'TableTechnologiesComponent:BUTTON_CLICK',
+      note: 'added',
+    };
+    this.emitter.emit(message);
+  }
 }

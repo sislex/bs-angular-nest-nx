@@ -5,6 +5,8 @@ import { Teams } from '@back-app/entities/team.entity';
 import { TeamsService } from '../../services/teams.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpWarningContainerComponent } from '../pop-up-warning-container/pop-up-warning-container.component';
+import { UpdateFormContainerComponent } from '../update-form-container/update-form-container.component';
+import { AddedFormContainerComponent } from '../added-form-container/added-form-container.component';
 
 @Component({
   selector: 'app-table-teams-container',
@@ -32,18 +34,39 @@ export class TableTeamsContainerComponent implements OnInit {
       if ($event.note === 'delete') {
         const dialogRef = this.dialog.open(PopUpWarningContainerComponent, {
           data: {
-            event: 'TableTeamsComponent:BUTTON_CLICK',
-            data: $event
+            data: $event.data,
+            event: $event.event
           }
         });
         dialogRef.afterClosed().subscribe(result => {
           if (result) {
-            this.ngOnInit(); // Обновить список команд после удаления
+            this.ngOnInit();
           }
         });
       } else if ($event.note === 'update') {
-        console.log('up', $event);
+        const dialogRef = this.dialog.open(UpdateFormContainerComponent, {
+          data: {
+            data: $event.data,
+            event: $event.event
+          }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+            this.ngOnInit();
+          }
+        });
+      } else if ($event.note === 'added') {
+        const dialogRef = this.dialog.open(AddedFormContainerComponent, {
+          data: 'TableTeamsComponent:BUTTON_CLICK',
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            this.ngOnInit();
+        });
       }
+    } else if ($event.event === 'TableTeamsComponent:SLIDE') {
+      this.teamsService.updateTeams($event.data.id, $event.data).subscribe(() => {
+        console.log('update Team free. Id:', $event.data.id);
+      });
     }
   }
 }

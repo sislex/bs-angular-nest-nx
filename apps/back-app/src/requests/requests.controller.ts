@@ -1,7 +1,10 @@
-import { Controller, Post, Body, HttpCode, HttpStatus, Get } from '@nestjs/common';
+import { Controller, Post, Body, HttpCode, HttpStatus, Get, Delete, Param, Put } from '@nestjs/common';
 import { RequestsService } from './requests.service';
 import { CreateRequestDto } from '../dto/create-request.dto';
 import { Requests } from '../entities/request.entity';
+import { UpdateTeamsDto } from '@back-app/dto/update-teams.dto';
+import { Teams } from '@back-app/entities/team.entity';
+import { updateRequestsDto } from '@back-app/dto/update-requests.dto';
 
 @Controller('requests')
 export class RequestsController {
@@ -17,6 +20,16 @@ export class RequestsController {
   async create(@Body() createRequestDto: CreateRequestDto): Promise<Requests> {
     const createdRequest = await this.requestsService.create(createRequestDto);
     return createdRequest;
+  }
+
+  @Delete(':id')
+  async remove(@Param('id') id: string): Promise<void> {
+    return this.requestsService.remove(id);
+  }
+
+  @Put(':id')
+  async updateRequests(@Param('id') id: any, @Body() updateRequestsDto: updateRequestsDto): Promise<Teams> {
+    return this.requestsService.update(+id, updateRequestsDto);
   }
 
 }

@@ -7,8 +7,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
+
 @Component({
-  selector: 'app-update-form',
+  selector: 'app-added-form',
   standalone: true,
   imports: [
     CommonModule,
@@ -18,15 +19,18 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     MatCardModule,
     MatButtonModule,
   ],
-
-  templateUrl: './update-form.component.html',
-  styleUrl: './update-form.component.scss',
+  templateUrl: './added-form.component.html',
+  styleUrl: './added-form.component.scss',
 })
-export class UpdateFormComponent {
-  @Output() emitter = new EventEmitter();
+export class AddedFormComponent {
+  @Output() emitter = new EventEmitter()
+
+  name = '';
+  description = '';
+  photo = '';
 
   constructor(
-    public dialogRef: MatDialogRef<UpdateFormComponent>,
+    public dialogRef: MatDialogRef<AddedFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
@@ -36,9 +40,12 @@ export class UpdateFormComponent {
     } else if (note === 'ok') {
 
       const message = {
-        event: this.data.event,
-        data: this.data.data,
-        note,
+        event: this.data,
+        data: {
+          name: this.name,
+          description: this.description,
+          photo: this.photo
+        },
       };
       this.emitter.emit(message);
     }

@@ -1,4 +1,4 @@
-export class updateTeamsDto {
+export class UpdateTeamsDto {
   name: string;
   description: string;
   free: number;
