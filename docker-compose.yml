@@ -15,6 +15,21 @@ services:
     networks:
       - app-network
 
+  #  phpmyadmin:
+  #    image: phpmyadmin/phpmyadmin
+  #    container_name: phpmyadmin
+  #    environment:
+  #      PMA_HOST: mysql
+  #      PMA_PORT: 3306
+  #      MYSQL_ROOT_PASSWORD: root
+  #    ports:
+  #      - '8080:80'
+  #    depends_on:
+  #      - mysql
+  #    networks:
+  #      - app-network
+
+#  backend:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
@@ -51,8 +66,8 @@ services:
 #  all:
 #    build:
 #      context: .
-#      dockerfile: docker/Dockerfile.all
-#    container_name: all-app
+#      dockerfile: docker/Dockerfile.backend
+#    container_name: back-app
 #    depends_on:
 #      - mysql
 #    environment:

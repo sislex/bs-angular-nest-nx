@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SimplebarAngularModule} from "simplebar-angular";
 import { TeamsService } from '../../../../services/teams.service';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { Teams } from '@back-app/entities/team.entity';
 
 @Component({
@@ -18,6 +19,7 @@ export class DevelopersComponent implements OnInit {
   constructor(private teamsService: TeamsService) {}
 
   ngOnInit(): void {
+    console.log('getTeams');
     this.teamsService.getTeams().subscribe((data: Teams[]) => {
       this.speakerData = data;
     });

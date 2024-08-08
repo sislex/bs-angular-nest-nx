@@ -5,21 +5,20 @@ FROM node:20.14
 WORKDIR /app
 
 # Копируем файлы package.json и package-lock.json
-COPY package*.json ./
+COPY ./ ./
 
 # Устанавливаем зависимости
-RUN npm install
+RUN npm ci
 
-# Копируем файлы проекта
-COPY ./dist ./dist
+# Собираем билд build:back
+RUN npm run build:back
 
-# Открываем порты для приложения
+# Собираем билд build:back
+RUN npm run build-ssr:front
+
+# Откройте порты 3000 и 4000
 EXPOSE 3000
 EXPOSE 4000
 
-# Копируем скрипт запуска
-COPY ./start.sh /app/start.sh
-RUN chmod +x /app/start.sh
-
 # Команда для запуска скрипта
-CMD ["/app/start.sh"]
+RUN npm run server:start
