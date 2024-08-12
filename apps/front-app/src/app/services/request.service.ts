@@ -14,4 +14,12 @@ export class RequestService {
   sendRequest(requestData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/requests`, requestData);
   }
+
+  setSession(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/teams/setSession`);
+  }
+
+  getSession(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/teams/getSession`);
+  }
 }
