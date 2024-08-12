@@ -40,7 +40,7 @@ export class AppModule {
           secret: 'your-secret-key', // замените на ваш секретный ключ
           resave: false,
           saveUninitialized: false,
-          cookie: { secure: false }, // выставите true если используете https
+          cookie: { secure: false, sameSite: 'none', httpOnly: false}, // выставите true если используете https
         }),
       )
       .forRoutes('*');
