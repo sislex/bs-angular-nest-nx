@@ -2,7 +2,6 @@ import { Controller, Post, Body, HttpCode, HttpStatus, Get, Delete, Param, Put }
 import { RequestsService } from './requests.service';
 import { CreateRequestDto } from '../dto/create-request.dto';
 import { Requests } from '../entities/request.entity';
-import { UpdateTeamsDto } from '@back-app/dto/update-teams.dto';
 import { Teams } from '@back-app/entities/team.entity';
 import { updateRequestsDto } from '@back-app/dto/update-requests.dto';
 
