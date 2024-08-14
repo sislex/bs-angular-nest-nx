@@ -11,8 +11,10 @@
     "build:back": "nx build back-app",
     "build:front": "nx build front-app",
     "build:admin": "nx build admin-app",
-    "build-ssr:front": "nx run front-app:server:production --verbose",
-    "server:start": "concurrently \"node dist/apps/back-app/main.js\" \"node dist/apps/front-app/server/main.js\""
+    "build-ssr:front": "nx run front-app:server:production",
+    "start:back": "node dist/apps/back-app/main.js",
+    "start:front": "node dist/apps/front-app/server/main.js",
+    "start:all": "concurrently \"node dist/apps/back-app/main.js\" \"node dist/apps/front-app/server/main.js\""
   },
   "private": true,
   "dependencies": {
