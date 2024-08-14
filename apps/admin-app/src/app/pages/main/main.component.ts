@@ -17,10 +17,10 @@ import { TablesComponent } from '../../components/tables/tables.component';
 export class MainComponent {
   @Output() emitter = new EventEmitter();
 
-  events(data: any){
+  events($event: any){
     this.emitter.emit({
-      event: data.event,
-      data: data.data
+      event: $event.event,
+      data: $event.data
     })
   }
 }
