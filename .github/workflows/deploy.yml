@@ -23,7 +23,7 @@ jobs:
 
       - name: Clone repository and switch to release branch
         run: |
-          ssh -o StrictHostKeyChecking=no -p 2200 root@178.159.45.219 << 'EOF'
+          ssh -o StrictHostKeyChecking=no -p 2200 root@185.244.50.198 << 'EOF'
             DEPLOY_DIR="$HOME/bs-angular-nest-nx"
 
             cd bs-angular-nest-nx
