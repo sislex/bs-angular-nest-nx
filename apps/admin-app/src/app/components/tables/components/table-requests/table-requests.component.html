@@ -1,3 +1,9 @@
+<div class="head">
+  <h2>Requests</h2>
+  <button mat-icon-button class="add" (click)="addClick()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
 <table mat-table [dataSource]="requests" class="mat-elevation-z8">
 
   <ng-container matColumnDef="id">
@@ -31,10 +37,11 @@
       <mat-slide-toggle
         [(ngModel)]="element.processed"
         [checked]="element.processed === 1"
-        (change)="element.processed = $event.checked ? 1 : 0">
+        (change)="onProcessedChange($event, element)">
       </mat-slide-toggle>
     </td>
   </ng-container>
+
 
   <ng-container matColumnDef="userName">
     <th mat-header-cell *matHeaderCellDef> Name of the person who processed the application </th>
@@ -46,6 +53,14 @@
     <td mat-cell *matCellDef="let element"> {{element.timestamp}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef> Delete </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-mini-fab (click)="buttonClick(element, 'delete')">
+        <mat-icon class="del">delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

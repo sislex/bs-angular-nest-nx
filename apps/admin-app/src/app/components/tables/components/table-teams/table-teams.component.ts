@@ -3,13 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Teams } from '@back-app/entities/team.entity';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
-
 
 export interface Team {
   id: number;
@@ -38,40 +36,35 @@ export class TableTeamsComponent {
   @Output() emitter = new EventEmitter();
   @Input() teams: Teams[] = [];
 
-  constructor(
-    private http: HttpClient
-  ) {}
-
-  buttonClick(id: any, name:string, note: string) {
-
+  buttonClick(element: any, note: string) {
     const message = {
       event: 'TableTeamsComponent:BUTTON_CLICK',
-      id,
-      name,
+      data: element,
       note,
     };
-
     this.emitter.emit(message);
   }
 
-  updateTeam(team: any) {
-    this.http.put(`/api/teams/${team.id}`, team)
-      .subscribe(response => {
-        console.log('Team updated', response);
-      }, error => {
-        console.error('Error updating teams', error);
-      });
+  addClick() {
+    const message = {
+      event: 'TableTeamsComponent:BUTTON_CLICK',
+      note: 'added',
+    };
+    this.emitter.emit(message);
   }
 
-  newTeam: Partial<Team> = { name: '', description: '', free: 0, photo: '' };
+  onFreeChange(event: any, element: any): void {
+    element.processed = event.checked ? 1 : 0;
 
-  addTeam() {
-    const newId = 1;
-    const teamToAdd = { ...this.newTeam, id: newId } as Team;
-    this.teams.push(teamToAdd);
-    this.newTeam = { name: '', description: '', free: 0, photo: '' }; // Сброс формы
+    const message = {
+      event: 'TableTeamsComponent:SLIDE',
+      data: element
+    };
+    this.emitter.emit(message);
+
+    console.log('Processed value changed:', element.processed);
+
   }
 
   displayedColumns: string[] = ['id', 'name', 'description', 'free', 'photo', 'update', 'delete' ];
-
 }

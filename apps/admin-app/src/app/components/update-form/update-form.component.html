@@ -1,28 +1,28 @@
 <mat-card appearance="outlined">
   <mat-card-content>
 
-    <span>UPDATE ID:</span>
+    <span>UPDATE ID: {{ data.data.id }}</span>
 
     <mat-form-field class="example-full-width">
       <mat-label>Name</mat-label>
-      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+      <textarea matInput [(ngModel)]="data.data.name"></textarea>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Description</mat-label>
-      <textarea matInput [(ngModel)]="element.description"></textarea>
+      <textarea matInput [(ngModel)]="data.data.description"></textarea>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Photo</mat-label>
-      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+      <textarea matInput [(ngModel)]="data.data.photo"></textarea>
     </mat-form-field>
 
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-button (click)="updateTechnologies(element)">Ok</button>
-    <button mat-button>Cancel</button>
+    <button mat-button (click)="buttonClick('ok')">Ok</button>
+    <button mat-button (click)="buttonClick('cancel')">Cancel</button>
   </mat-card-actions>
 
 </mat-card>

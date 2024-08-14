@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - release
-  pull_request:
-    branches:
-      - release
+#  pull_request:
+#    branches:
+#      - release
 
 jobs:
   deploy:
@@ -26,56 +26,13 @@ jobs:
           ssh -o StrictHostKeyChecking=no -p 2200 root@178.159.45.219 << 'EOF'
             DEPLOY_DIR="$HOME/bs-angular-nest-nx"
 
-            rm -rf bs-angular-nest-nx/
-
-            #Clone the repository if it doesn't exist
-            if [ ! -d ".git" ]; then
-              git clone https://github.com/sislex/bs-angular-nest-nx.git
-            fi
-
             cd bs-angular-nest-nx
 
             git fetch
             git checkout release
             git pull origin release
 
-            export PATH=/root/.nvm/versions/node/v20.14.0/bin:$PATH
-
-            node -v
-            npm -v
-
-            npm ci
-
-            npm run build-ssr:front
-
-            if [ -d "dist/apps/front-app/browser" ]; then
-              echo "Build completed successfully."
-            else
-              echo "Build failed [front-app/browser]."
-              exit 1
-            fi
-
-             if [ -d "dist/apps/front-app/server" ]; then
-              echo "Build completed successfully."
-            else
-              echo "Build failed [front-app/server]."
-              exit 1
-            fi
-
-            if [ -d "dist/apps/back-app" ]; then
-              echo "Build completed successfully."
-            else
-              echo "Build failed [back-app]."
-              exit 1
-            fi
-
             docker-compose down
             docker-compose up --build -d
-
-
-
-
-
-
 
           EOF

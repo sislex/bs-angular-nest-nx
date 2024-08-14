@@ -1,9 +1,11 @@
 <mat-drawer-container class="example-container">
 
-  <mat-drawer class="drawer" mode="side" opened >
-    <button mat-button class="butt" (click)="showTab('requests')"> Requests </button>
-    <button mat-button class="butt" (click)="showTab('team')"> Team </button>
-    <button mat-button class="butt" (click)="showTab('technologies')"> Technologies </button>
+  <mat-drawer mode="side" opened >
+    <div class="drawers">
+      <button mat-button class="butt" (click)="showTab('requests')"> Requests </button>
+      <button mat-button class="butt" (click)="showTab('team')"> Team </button>
+      <button mat-button class="butt" (click)="showTab('technologies')"> Technologies </button>
+    </div>
   </mat-drawer>
 
   <mat-drawer-content class="drawer-content">
@@ -17,4 +19,3 @@
   </mat-drawer-content>
 
 </mat-drawer-container>
-

@@ -11,6 +11,9 @@ import {
 } from '../../containers/table-technologies-container/table-technologies-container.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { UpdateFormComponent } from '../update-form/update-form.component';
+
 
 @Component({
   selector: 'app-tables',
@@ -23,7 +26,9 @@ import { MatButtonModule } from '@angular/material/button';
     TableTeamsContainerComponent,
     TableTechnologiesContainerComponent,
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    UpdateFormComponent
   ],
   templateUrl: './tables.component.html',
   styleUrl: './tables.component.scss',

@@ -2,8 +2,9 @@ import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { TechnologiesService } from './technologies.service';
 import { Technologies } from '../entities/technologies.entity';
 import { updateTechnologiesDto } from '../dto/update-technologies.dto';
-import { Teams } from '../entities/team.entity';
 import { createTechnologiesDto } from '../dto/create-technologies.dto';
+import { UpdateTeamsDto } from '@back-app/dto/update-teams.dto';
+import { Teams } from '@back-app/entities/team.entity';
 
 
 @Controller('technologies')
@@ -11,7 +12,7 @@ export class TechnologiesController {
   constructor(private readonly technologiesService: TechnologiesService) {}
 
   @Post()
-  async create(@Body() createTechnologiesDto: createTechnologiesDto): Promise<Teams> {
+  async create(@Body() createTechnologiesDto: createTechnologiesDto): Promise<Technologies> {
     return this.technologiesService.create(createTechnologiesDto);
   }
 
@@ -20,9 +21,14 @@ export class TechnologiesController {
     return this.technologiesService.findAll();
   }
 
+  @Get(':id')
+  async findOne(@Param('id') id: string): Promise<Technologies> {
+    return this.technologiesService.findOne(+id);
+  }
+
   @Put(':id')
-  async updateOne(@Body() updateTechnologiesDto: updateTechnologiesDto, @Param('id') id: string) {
-    return await this.technologiesService.update(id, updateTechnologiesDto);
+  async updateOne(@Param('id') id: any, @Body() updateTechnologiesDto: updateTechnologiesDto): Promise<Technologies> {
+    return this.technologiesService.update(+id, updateTechnologiesDto);
   }
 
   @Delete(':id')

@@ -4,11 +4,17 @@ FROM node:20.14
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем файлы проекта
-COPY ./dist ./dist
+# Копируем файлы package.json и package-lock.json
+COPY ./ ./
 
-# Открываем порт для Node.js
+# Устанавливаем зависимости
+RUN npm ci
+
+# Собираем билд
+RUN npm run build-ssr:front
+
+# Открываем порты для приложения
 EXPOSE 4000
 
-# Команда для запуска приложения
+# Команда для запуска скрипта
 CMD ["node", "dist/apps/front-app/server/main.js"]

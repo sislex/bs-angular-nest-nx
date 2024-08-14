@@ -6,6 +6,7 @@ import { Login } from '../entities/login.entity';
 import { updateTechnologiesDto } from '../dto/update-technologies.dto';
 import { Teams } from '../entities/team.entity';
 import { createTechnologiesDto } from '../dto/create-technologies.dto';
+import { UpdateTeamsDto } from '@back-app/dto/update-teams.dto';
 
 @Injectable()
 export class TechnologiesService {
@@ -23,9 +24,18 @@ export class TechnologiesService {
     return this.technologiesRepository.find();
   }
 
-  async update(id: any, updateTechnologiesDto: updateTechnologiesDto): Promise<Login> {
-    await this.technologiesRepository.update(id, updateTechnologiesDto);
-    return this.technologiesRepository.findOne(id);
+  async findOne(id: number): Promise<Technologies> {
+    return this.technologiesRepository.findOneBy({ id });
+  }
+
+  async update(id: number, updateTechnologiesDto: updateTechnologiesDto): Promise<Technologies> {
+    const technologies = await this.technologiesRepository.findOne({ where: { id } });
+    if (!technologies) {
+      throw new NotFoundException(`Team with ID ${id} not found`);
+    }
+
+    Object.assign(technologies, updateTechnologiesDto);
+    return this.technologiesRepository.save(technologies);
   }
 
   async remove(id: string): Promise<void> {

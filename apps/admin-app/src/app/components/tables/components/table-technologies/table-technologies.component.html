@@ -1,4 +1,10 @@
-<h2>Technologies</h2>
+<div class="head">
+  <h2>Technologies</h2>
+  <button mat-icon-button class="add" (click)="addClick()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
 <table mat-table [dataSource]="technologies" class="mat-elevation-z8">
 
   <ng-container matColumnDef="id">
@@ -24,7 +30,7 @@
   <ng-container matColumnDef="update">
     <th mat-header-cell *matHeaderCellDef> Update </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-mini-fab (click)="buttonClick(element.id, element.name, 'update')">
+      <button mat-mini-fab (click)="buttonClick(element, 'update')">
         <mat-icon>keyboard_double_arrow_up</mat-icon>
       </button>
     </td>
@@ -33,8 +39,8 @@
   <ng-container matColumnDef="delete">
     <th mat-header-cell *matHeaderCellDef> Delete </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-mini-fab (click)="buttonClick(element.id, element.name, 'delete')">
-        <mat-icon>delete</mat-icon>
+      <button mat-mini-fab (click)="buttonClick(element, 'delete')">
+        <mat-icon class="del">delete</mat-icon>
       </button>
     </td>
   </ng-container>

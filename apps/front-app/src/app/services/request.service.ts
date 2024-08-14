@@ -6,13 +6,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RequestService {
-  private apiUrl = `http://178.159.45.219:3000/requests`;
-
+  private baseUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {
   }
 
-  sendRequest(requestData: any): Observable<any> {
-    return this.http.post(this.apiUrl, requestData);
+  setSession(): Observable<any> {
+    return this.http.get('http://localhost:3000/teams/setSession', { withCredentials: true });
   }
+
+  getSession(): Observable<any> {
+    return this.http.get('http://localhost:3000/teams/getSession', { withCredentials: true });
+  }
+
+  sendRequest(requestData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/requests`, requestData);
+  }
+
+
 }

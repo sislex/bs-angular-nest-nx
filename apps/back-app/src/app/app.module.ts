@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -10,6 +10,7 @@ import { Technologies } from '../entities/technologies.entity';
 import { TechnologiesModule } from '../technologies/technologies.module';
 import { Login } from '../entities/login.entity';
 import { LoginModule } from '../login/login.module';
+import session from 'express-session';
 
 @Module({
   imports: [
@@ -31,4 +32,19 @@ import { LoginModule } from '../login/login.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(
+        session({
+          secret: 'your-secret-key', // замените на ваш секретный ключ
+          resave: false,
+          saveUninitialized: false,
+          cookie: {
+            secure: false, // Не используйте HTTPS
+          },
+        }),
+      )
+      .forRoutes('*');
+  }
+}

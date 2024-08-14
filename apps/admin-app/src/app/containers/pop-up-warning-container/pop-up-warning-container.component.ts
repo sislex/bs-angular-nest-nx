@@ -4,6 +4,7 @@ import { PopUpWarningComponent } from '../../components/pop-up-warning/pop-up-wa
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TeamsService } from '../../services/teams.service';
 import { TechnologiesService } from '../../services/technologies.service';
+import { RequestsService } from '../../services/requests.service';
 
 @Component({
   selector: 'app-pop-up-warning-container',
@@ -16,20 +17,27 @@ export class PopUpWarningContainerComponent {
 
   constructor(
     public dialogRef: MatDialogRef<PopUpWarningComponent>,
-    @Inject(MAT_DIALOG_DATA) public  data: { event: any, data: any },
+    @Inject(MAT_DIALOG_DATA) public  data: any,
     private teamsService: TeamsService,
     private technologiesService: TechnologiesService,
+    private requestsService: RequestsService,
   ) {}
 
   events($event: any){
-    if ($event.data === 'TableTeamsComponent:BUTTON_CLICK') {
-      this.teamsService.deleteTeams(this.data.data.id).subscribe(() => {
-        this.dialogRef.close(true);
-      });
-    } else if ($event.data === 'TableTechnologiesComponent:BUTTON_CLICK') {
-      this.technologiesService.deleteTechnologies(this.data.data.id).subscribe(() => {
-        this.dialogRef.close(true);
-      });
+    if ($event.note === 'ok') {
+      if ($event.event === 'TableTeamsComponent:BUTTON_CLICK') {
+        this.teamsService.deleteTeams($event.data.id).subscribe(() => {
+          this.dialogRef.close(true);
+        });
+      } else if ($event.event === 'TableTechnologiesComponent:BUTTON_CLICK') {
+        this.technologiesService.deleteTechnologies($event.data.id).subscribe(() => {
+          this.dialogRef.close(true);
+        });
+      } else if ($event.event === 'TableRequestsComponent:BUTTON_CLICK') {
+        this.requestsService.deleteRequest($event.data.id).subscribe(() => {
+          this.dialogRef.close(true);
+        });
+      }
     }
   }
 }

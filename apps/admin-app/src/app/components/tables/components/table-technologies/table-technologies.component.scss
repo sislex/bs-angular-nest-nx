@@ -1,7 +1,13 @@
-table {
-  width: 100%;
+.head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-h2 {
-  text-align: center;
+.add {
+  color: #02b102;
+}
+
+.del {
+  color: #ca1515;
 }

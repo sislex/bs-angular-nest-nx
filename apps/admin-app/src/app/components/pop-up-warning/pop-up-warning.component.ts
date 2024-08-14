@@ -27,9 +27,10 @@ export class PopUpWarningComponent {
     if (note === 'cancel') {
       this.dialogRef.close();
     } else if (note === 'ok') {
+
       const message = {
-        event: 'PopUpWarningComponent: BUTTON_CLICK',
-        data: this.data.event,
+        event: this.data.event,
+        data: this.data.data,
         note,
       };
 

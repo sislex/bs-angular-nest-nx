@@ -1,0 +1,28 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+
+    <h2>ADDED NEW POSITION</h2>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <textarea matInput [(ngModel)]="email"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <textarea matInput [(ngModel)]="name"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Message</mat-label>
+      <textarea matInput [(ngModel)]="message"></textarea>
+    </mat-form-field>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button (click)="buttonClick('ok')">Ok</button>
+    <button mat-button (click)="buttonClick('cancel')">Cancel</button>
+  </mat-card-actions>
+
+</mat-card>
