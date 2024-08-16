@@ -1,7 +1,7 @@
-@if (permission === 0) {
-  <app-main></app-main>
+@if (state) {
+  <app-main [user]="user" (emitter)="events($event)"></app-main>
 } @else {
-  <app-login></app-login>
+  <app-login (emitter)="events($event)"></app-login>
 }
 
 

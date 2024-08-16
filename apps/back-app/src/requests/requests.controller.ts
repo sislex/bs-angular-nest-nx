@@ -2,8 +2,8 @@ import { Controller, Post, Body, HttpCode, HttpStatus, Get, Delete, Param, Put }
 import { RequestsService } from './requests.service';
 import { CreateRequestDto } from '../dto/create-request.dto';
 import { Requests } from '../entities/request.entity';
-import { Teams } from '@back-app/entities/team.entity';
-import { updateRequestsDto } from '@back-app/dto/update-requests.dto';
+import { Teams } from '../entities/team.entity';
+import { updateRequestsDto } from '../dto/update-requests.dto';
 
 @Controller('requests')
 export class RequestsController {

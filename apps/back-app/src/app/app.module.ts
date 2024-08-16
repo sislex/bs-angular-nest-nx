@@ -11,6 +11,7 @@ import { TechnologiesModule } from '../technologies/technologies.module';
 import { Login } from '../entities/login.entity';
 import { LoginModule } from '../login/login.module';
 import session from 'express-session';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -23,6 +24,10 @@ import session from 'express-session';
       database: process.env.DATABASE_NAME || 'best_solutions_db',
       entities: [Requests, Teams, Technologies, Login],
       synchronize: true,
+    }),
+    JwtModule.register({
+      secret: 'your-secret-key',
+      signOptions: { expiresIn: '60s' },
     }),
     RequestsModule,
     TeamsModule,

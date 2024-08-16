@@ -10,25 +10,25 @@ export class TechnologiesService {
   constructor(private http: HttpClient) {}
 
   getTechnologies(): Observable<Technologies[]> {
-    return this.http.get<Technologies[]>(`${this.baseUrl}/technologies`);
+    return this.http.get<Technologies[]>(`${this.baseUrl}/technologies`, { withCredentials: true });
   }
 
   getOneTechnologies(id: number): Observable<Technologies> {
-    return this.http.get<Technologies>(`${this.baseUrl}/technologies/${id}`);
+    return this.http.get<Technologies>(`${this.baseUrl}/technologies/${id}`, { withCredentials: true });
   }
 
   deleteTechnologies(id: number): Observable<void> {
     const url = `${this.baseUrl}/technologies/${id}`;
-    return this.http.delete<void>(url);
+    return this.http.delete<void>(url, { withCredentials: true });
   }
 
   updateTechnologies(id: string, technologies: any): Observable<any> {
     const url = `${this.baseUrl}/technologies/${id}`;
-    return this.http.put<any>(url, technologies);
+    return this.http.put<any>(url, technologies, { withCredentials: true });
   }
 
   addedOne(technologies: any): Observable<any> {
     const url = `${this.baseUrl}/technologies`;
-    return this.http.post<any>(url, technologies);
+    return this.http.post<any>(url, technologies, { withCredentials: true });
   }
 }

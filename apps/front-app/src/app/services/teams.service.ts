@@ -6,12 +6,12 @@ import { Teams } from '@back-app/entities/team.entity';
 
 @Injectable({ providedIn: 'root' })
 export class TeamsService {
-  private apiUrl = `http://185.244.50.198:3000/teams`;
+  private baseUrl = `http://185.244.50.198:3000`;
 
   constructor(private http: HttpClient) {}
 
   getTeams(): Observable<Teams[]> {
-    return this.http.get<Teams[]>(this.apiUrl);
+    return this.http.get<Teams[]>(`${this.baseUrl}/teams`, { withCredentials: true });
   }
 
 }

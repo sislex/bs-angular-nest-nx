@@ -1,10 +1,11 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Req, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { TeamsService } from './teams.service';
 import { Teams } from '../entities/team.entity';
 import { UpdateTeamsDto } from '../dto/update-teams.dto';
 import { CreateTeamsDto } from '../dto/create-teams.dto';
-import { Request, Response } from 'express';
+import { AuthGuard } from '../login/jwt-auth.guard';
 
+@UseGuards(AuthGuard)
 @Controller('teams')
 export class TeamsController {
   constructor(private readonly teamsService: TeamsService) {}
@@ -17,28 +18,6 @@ export class TeamsController {
   @Get()
   async findAll(): Promise<Teams[]> {
     return this.teamsService.findAll();
-  }
-
-  @Get('setSession')
-  setSession(@Req() req: Request, @Res() res: Response) {
-    req.session.value = 'test value';
-    const value = req.session.value;
-    if (value) {
-      res.json({ value });
-    } else {
-      res.json({ message: 'No value in session' });
-    }
-    // res.json({ message: 'Value saved in session' });
-  }
-
-  @Get('getSession')
-  getSession(@Req() req: Request, @Res() res: Response) {
-    const value = req.session.value;
-    if (value) {
-      res.json({ value });
-    } else {
-      res.json({ message: 'No value in session' });
-    }
   }
 
   @Get(':id')
