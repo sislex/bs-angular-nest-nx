@@ -17,14 +17,14 @@ COPY . .
 RUN npx nx reset
 
 # Собираем фронтенд
-RUN npm run build-ssr:front
+# RUN npm run build-ssr:front
 
 # (Необязательно) Собираем бэкенд, если нужно
 RUN npm run build:back
 
 # Открываем порты 3000 и 4000
 EXPOSE 3000
-EXPOSE 4000
+# EXPOSE 4000
 
 # Указываем команду для запуска при старте контейнера
 CMD ["npm", "run", "start:all"]
