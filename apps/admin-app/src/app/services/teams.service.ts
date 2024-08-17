@@ -10,25 +10,25 @@ export class TeamsService {
   constructor(private http: HttpClient) {}
 
   getTeams(): Observable<Teams[]> {
-    return this.http.get<Teams[]>(`${this.baseUrl}/teams`);
+    return this.http.get<Teams[]>(`${this.baseUrl}/teams`, { withCredentials: true });
   }
 
   getOneTeam(id: number): Observable<Teams> {
-    return this.http.get<Teams>(`${this.baseUrl}/teams/${id}`);
+    return this.http.get<Teams>(`${this.baseUrl}/teams/${id}`, { withCredentials: true });
   }
 
   deleteTeams(id: number): Observable<void> {
     const url = `${this.baseUrl}/teams/${id}`;
-    return this.http.delete<void>(url);
+    return this.http.delete<void>(url, { withCredentials: true });
   }
 
   updateTeams(id: string, team: any): Observable<any> {
     const url = `${this.baseUrl}/teams/${id}`;
-    return this.http.put<any>(url, team);
+    return this.http.put<any>(url, team, { withCredentials: true });
   }
 
   addedOne(team: any): Observable<any> {
     const url = `${this.baseUrl}/teams`;
-    return this.http.post<any>(url, team);
+    return this.http.post<any>(url, team, { withCredentials: true });
   }
 }

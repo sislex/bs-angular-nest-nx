@@ -3,9 +3,6 @@ import { TechnologiesService } from './technologies.service';
 import { Technologies } from '../entities/technologies.entity';
 import { updateTechnologiesDto } from '../dto/update-technologies.dto';
 import { createTechnologiesDto } from '../dto/create-technologies.dto';
-import { UpdateTeamsDto } from '@back-app/dto/update-teams.dto';
-import { Teams } from '@back-app/entities/team.entity';
-
 
 @Controller('technologies')
 export class TechnologiesController {

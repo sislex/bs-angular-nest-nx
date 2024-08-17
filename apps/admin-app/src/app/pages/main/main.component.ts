@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavComponent } from '../../components/nav/nav.component';
 import { TablesComponent } from '../../components/tables/tables.component';
@@ -15,12 +15,14 @@ import { TablesComponent } from '../../components/tables/tables.component';
   styleUrl: './main.component.scss',
 })
 export class MainComponent {
+  @Input() user = '';
   @Output() emitter = new EventEmitter();
 
-  events(data: any){
+
+  events($event: any){
     this.emitter.emit({
-      event: data.event,
-      data: data.data
+      event: $event.event,
+      data: $event.data
     })
   }
 }
