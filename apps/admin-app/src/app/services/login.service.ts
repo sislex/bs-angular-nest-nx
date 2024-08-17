@@ -10,14 +10,16 @@ export class LoginService {
 
 
   login(data: {login: string, pass: string}) {
-    return this.http.post(`${this.baseUrl}/login`, data);
+    return this.http.post(`${this.baseUrl}/login`, data, { withCredentials: true });
   }
 
-  updateLogin(id: number, data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/login/${id}`, data);
+  updateLogin(): Observable<any> {
+    console.log('Работа')
+    return this.http.get(`${this.baseUrl}/login/check`, { withCredentials: true });
   }
 
-  updatePermission(id: number, permission: number): Observable<any> {
-    return this.http.patch(`${this.baseUrl}/login/${id}`, { permission });
+  logout(): Observable<any> {
+    return this.http.post(`${this.baseUrl}/login/logout`, {}, { withCredentials: true });
   }
+
 }

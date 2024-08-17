@@ -11,6 +11,7 @@ export class LoginService {
     private readonly loginRepository: Repository<Login>,
   ) {}
 
+
   async findAll(): Promise<Login[]> {
     return this.loginRepository.find();
   }

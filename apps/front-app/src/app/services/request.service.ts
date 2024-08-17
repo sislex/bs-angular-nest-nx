@@ -20,7 +20,7 @@ export class RequestService {
   }
 
   sendRequest(requestData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/requests`, requestData);
+    return this.http.post(`${this.baseUrl}/requests`, requestData, { withCredentials: true });
   }
 
 

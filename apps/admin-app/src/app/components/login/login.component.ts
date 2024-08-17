@@ -40,7 +40,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.emitter.emit({
         event: 'LoginComponent:SUBMIT_LOGIN',
-        data:  this.loginForm.value,
+        data: this.loginForm.value,
       });
     }
   }

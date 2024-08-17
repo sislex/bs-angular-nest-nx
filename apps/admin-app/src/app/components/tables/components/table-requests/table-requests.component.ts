@@ -6,9 +6,7 @@ import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { Teams } from '@back-app/entities/team.entity';
-import { MatDialog } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button'
 
 
 @Component({
