@@ -11,14 +11,6 @@ export class RequestService {
   constructor(private http: HttpClient) {
   }
 
-  setSession(): Observable<any> {
-    return this.http.get('http://localhost:3000/teams/setSession', { withCredentials: true });
-  }
-
-  getSession(): Observable<any> {
-    return this.http.get('http://localhost:3000/teams/getSession', { withCredentials: true });
-  }
-
   sendRequest(requestData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/requests`, requestData, { withCredentials: true });
   }

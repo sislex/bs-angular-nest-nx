@@ -6,6 +6,7 @@ import { updateTechnologiesDto } from '../dto/update-technologies.dto';
 import { Teams } from '../entities/team.entity';
 import { createTechnologiesDto } from '../dto/create-technologies.dto';
 
+
 @Injectable()
 export class TechnologiesService {
   constructor(

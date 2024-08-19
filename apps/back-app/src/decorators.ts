@@ -1,3 +1,3 @@
 import { SetMetadata } from '@nestjs/common';
 
-export const SkipInterceptor = () => SetMetadata('skipInterceptor', true);
+export const UseJwtInterceptor = () => SetMetadata('useJwtInterceptor', true);

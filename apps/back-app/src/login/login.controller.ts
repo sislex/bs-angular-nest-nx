@@ -3,7 +3,7 @@ import { LoginService } from './login.service';
 import { Response } from 'express';
 import { updateLoginDto } from '../dto/update-login.dto';
 import { JwtService } from '@nestjs/jwt';
-import { SkipInterceptor } from '../decorators';
+
 
 @Controller('login')
 export class LoginController {
@@ -13,7 +13,6 @@ export class LoginController {
   ) {}
 
   @Post()
-  @SkipInterceptor()
   async login(@Body() creds: {login: string, pass: string}, @Req() req: any): Promise<any> {
     const userList = await this.loginService.findAll();
     const foundUser = userList.find((user) => user.name === creds.login && user.password === creds.pass);
@@ -31,7 +30,6 @@ export class LoginController {
   }
 
   @Post('logout')
-  @SkipInterceptor()
   async logout(@Req() req: any, @Res() res: Response): Promise<any> {
     // Удаляем токен из cookies
     res.clearCookie('accessToken');
@@ -42,11 +40,8 @@ export class LoginController {
   }
 
   @Get('check')
-  @SkipInterceptor()
   async updateLogin(@Req() req: any, @Res() res: Response) {
-    console.log('МЕТОД ВЫЗВАН');
     const token = req.cookies['accessToken'];
-
     if (token) {
       try {
         const decoded = await this.jwtService.verifyAsync(token);
@@ -77,7 +72,6 @@ export class LoginController {
   }
 
   @Put(':id')
-  @SkipInterceptor()
   async updateOne(@Body() updateLoginDto: updateLoginDto, @Param('id') id: string) {
     return await this.loginService.update(id, updateLoginDto);
   }

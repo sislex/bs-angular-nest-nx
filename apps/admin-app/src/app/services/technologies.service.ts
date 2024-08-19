@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Technologies } from '@back-app/entities/technologies.entity';
 
 @Injectable({ providedIn: 'root' })
 export class TechnologiesService {
@@ -9,12 +8,8 @@ export class TechnologiesService {
 
   constructor(private http: HttpClient) {}
 
-  getTechnologies(): Observable<Technologies[]> {
-    return this.http.get<Technologies[]>(`${this.baseUrl}/technologies`, { withCredentials: true });
-  }
-
-  getOneTechnologies(id: number): Observable<Technologies> {
-    return this.http.get<Technologies>(`${this.baseUrl}/technologies/${id}`, { withCredentials: true });
+  getTechnologies(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/technologies`, { withCredentials: true });
   }
 
   deleteTechnologies(id: number): Observable<void> {
