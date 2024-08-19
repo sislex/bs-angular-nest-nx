@@ -13,21 +13,20 @@ import { Reflector } from '@nestjs/core';
 export class JwtInterceptor implements NestInterceptor {
   constructor(
     private readonly jwtService: JwtService,
-    private readonly reflector: Reflector, // Внедрение Reflector
+    private readonly reflector: Reflector,
   ) {}
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const req = context.switchToHttp().getRequest();
-    const res = context.switchToHttp().getResponse();
-
-    // Проверка на наличие декоратора @SkipInterceptor()
     const handler = context.getHandler();
-    const skipInterceptor = this.reflector.get<boolean>('skipInterceptor', handler);
+    const useInterceptor = this.reflector.get<boolean>('useJwtInterceptor', handler);
 
-    if (skipInterceptor) {
+    // Пропускаем, если декоратор @UseJwtInterceptor не установлен
+    if (!useInterceptor) {
       return next.handle();
     }
 
+    const req = context.switchToHttp().getRequest();
+    const res = context.switchToHttp().getResponse();
     const token = req.cookies['accessToken'];
 
     if (!token) {
@@ -36,7 +35,7 @@ export class JwtInterceptor implements NestInterceptor {
 
     try {
       const decoded = this.jwtService.verify(token);
-      req.user = decoded; // Сохраняем декодированную информацию в запросе
+      req.user = decoded;
     } catch (error) {
       if (error.name === 'TokenExpiredError') {
         res.clearCookie('accessToken');
