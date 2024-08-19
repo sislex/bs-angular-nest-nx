@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { Teams } from '@back-app/entities/team.entity';
 
 @Injectable({ providedIn: 'root' })
 export class TeamsService {
@@ -10,8 +8,8 @@ export class TeamsService {
 
   constructor(private http: HttpClient) {}
 
-  getTeams(): Observable<Teams[]> {
-    return this.http.get<Teams[]>(`${this.baseUrl}/teams`, { withCredentials: true });
+  getTeams(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/teams`, { withCredentials: true });
   }
 
 }
