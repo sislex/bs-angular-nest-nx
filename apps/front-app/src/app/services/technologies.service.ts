@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class TechnologiesService {
-  private baseUrl = `http://185.244.50.198/:3000`;
+  private baseUrl = `http://185.244.50.198:3000`;
 
   constructor(private http: HttpClient) {}
 
