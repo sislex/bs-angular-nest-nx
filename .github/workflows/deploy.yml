@@ -28,14 +28,13 @@ jobs:
           ssh -o StrictHostKeyChecking=no -p 22 root@185.244.50.198 << 'EOF'
             DEPLOY_DIR="$HOME/bs-angular-nest-nx"
 
-            cd bs-angular-nest-nx
+            cd $DEPLOY_DIR || exit 1
 
             git fetch
             git checkout release
             git pull origin release
 
             sudo systemctl restart docker
-#            docker-compose down
+            docker-compose down
             docker-compose up --build -d
-
           EOF
