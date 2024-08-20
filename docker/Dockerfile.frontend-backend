@@ -20,7 +20,7 @@ RUN npx nx reset
 RUN npm run build-ssr:front
 
 # (Необязательно) Собираем бэкенд, если нужно
-RUN npm run build:back
+# RUN npm run build:back
 
 # Открываем порты 3000 и 4000
 EXPOSE 3000
