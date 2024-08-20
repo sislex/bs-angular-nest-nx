@@ -24,7 +24,7 @@ jobs:
 
       - name: Run build inside Docker
         run: |
-          docker run --rm -v ${{ github.workspace }}:/app -w /app node:20.14 sh -c "npm i && npm run build-ssr:front  && npm run build-ssr:back"
+          docker run --rm -v ${{ github.workspace }}:/app -w /app node:20.14 sh -c "npm i && npm run build-ssr:front"
 
       - name: Check build result
         run: |
