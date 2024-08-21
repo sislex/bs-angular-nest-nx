@@ -33,7 +33,7 @@ jobs:
             git checkout release
             git pull
 
-            sudo systemctl restart docker
+#            sudo systemctl restart docker
             docker-compose down
             docker-compose up --build -d
           EOF
