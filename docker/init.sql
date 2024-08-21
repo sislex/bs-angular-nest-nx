@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS best_solutions_db;
 
-USE BD1;
+USE best_solutions_db;
 
 
 --
